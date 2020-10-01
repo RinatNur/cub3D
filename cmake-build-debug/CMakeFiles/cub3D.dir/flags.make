@@ -6,5 +6,5 @@ C_FLAGS =  -framework OpenGL -framework AppKit -I minilibx -L../minilibx -lmlx -
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/jheat/cub3D/. -I/Users/jheat/cub3D/get_next_line -I/Users/jheat/cub3D/libft -I/Users/jheat/cub3D/minilibx 
+C_INCLUDES = -I/Users/jheat/git_cub3D/. -I/Users/jheat/git_cub3D/get_next_line -I/Users/jheat/git_cub3D/libft -I/Users/jheat/git_cub3D/minilibx 
 

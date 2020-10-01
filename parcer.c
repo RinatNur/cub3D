@@ -35,11 +35,42 @@ char 	**make_map(t_all *all)
 	}
 	return(map);
 }
+//
+//t_spr_list		*ft_spr_lstnew(int *x, int *y)
+//{
+//	t_spr_list	*new_el;
+//
+//	if ((new_el = malloc(sizeof(t_spr_list))))
+//	{
+//		new_el->spr_x = x;
+//		new_el->spr_y = y;
+//		new_el->next = NULL;
+//		return (new_el);
+//	}
+//	return (NULL);
+//}
+
+//void ft_spr_lstadd_back(t_spr_list **lst, t_spr_list *new)
+//{
+//	t_spr_list		*last;
+//
+//	last = *lst;
+//	if (!last && lst)
+//		*lst = new;
+//	else if (lst && new)
+//	{
+//		while (last->next)
+//			last = last->next;
+//		last->next = new;
+//		new->next = NULL;
+//	}
+//}
 
 void 	find_plr_sprite(t_all *all)
 {
 	int 	i;
 	int 	j;
+	int 	x = 0, y = 0;
 
 	i = 0;
 	all->plr_vis = "NSEW";
@@ -53,6 +84,13 @@ void 	find_plr_sprite(t_all *all)
 				all->plr.x = SCALE * j + (SCALE / 2);
 				all->plr.y = SCALE * i + (SCALE / 2);
 				all->plr.dir = ft_plr_vision(all->map[i][j]);
+			}
+			else if (all->map[i][j] == '2')
+			{
+				x = SCALE * j;
+				y = SCALE * i;
+				ft_spr_lstadd_back(&all->spr_list, ft_spr_lstnew(&x, &y));
+				printf("list.x = %i  list.y = %i\n", all->spr_list->spr_x, all->spr_list->spr_y);
 			}
 			j++;
 		}

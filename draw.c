@@ -9,7 +9,7 @@ void 	init_ray_begin(t_all *all)
 	all->ray.x = all->plr.x;
 	all->ray.y = all->plr.y;
 	all->ray.dir = all->ray.start;
-	all->all_rays[WIN_W] = '\0';
+
 }
 
 void 	ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb)

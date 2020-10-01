@@ -72,6 +72,12 @@ typedef struct  s_texture {
 	int 		height;
 }               t_texture;
 
+typedef struct				s_spr_list {
+	int						*spr_x;
+	int 					*spr_y;
+	struct t_sprite_list	*next;
+}							t_spr_list;
+
 typedef struct 	s_all
 {
 	t_texture	texture_NO;
@@ -81,6 +87,7 @@ typedef struct 	s_all
 	t_texture	texture_S;
 
 	t_list		*head;
+	t_spr_list	*spr_list;
 	t_wall		wall;
 	t_ray		ray;
 	t_win		win;
@@ -95,7 +102,7 @@ typedef struct 	s_all
 	double 		coef;
 	double 		x;
 	double 		y_tmp;
-	double		all_rays[];
+	double		*all_rays[];
 }				t_all;
 
 void		init_textures(t_all *all);
@@ -115,6 +122,7 @@ void 		ray_casting(t_all *all);
 //parcer.c
 double		ft_plr_vision(char map_vision);
 char 		**make_map(t_all *all);
+t_spr_list		*ft_spr_lstnew(int *x, int *y);
 void 		find_plr_sprite(t_all *all);
 
 #endif
