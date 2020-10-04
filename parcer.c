@@ -33,6 +33,7 @@ char 	**make_map(t_all *all)
 		map[++i] = tmp->content;
 		tmp = tmp->next;
 	}
+	map[++i] = NULL;
 	return(map);
 }
 

@@ -113,7 +113,7 @@ typedef struct 	s_all
 	double 		coef;
 	double 		x;
 	double 		y_tmp;
-//	double		mas_rays[800];
+	double		*mas_rays;
 }				t_all;
 
 void		init_textures(t_all *all);
