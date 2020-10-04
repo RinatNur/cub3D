@@ -35,11 +35,11 @@ typedef struct		s_ray {
 	double 		len;
 }				t_ray;
 
-typedef struct		s_sprite {
-	double 		x;
-	double 		y;
-	double 		dir;
-}				t_sprite;
+//typedef struct		s_sprite {
+//	double 		x;
+//	double 		y;
+//	double 		dir;
+//}				t_sprite;
 
 typedef struct		s_wall {
 	int			start;
@@ -73,9 +73,20 @@ typedef struct  s_texture {
 }               t_texture;
 
 typedef struct				s_spr_list {
-	int						*spr_x;
-	int 					*spr_y;
-	struct t_sprite_list	*next;
+	int						spr_x;
+	int 					spr_y;
+	int 					len_from_plr;
+	double 					spr_dir;
+	double 					spr_scr_size;
+	double					h_offset;
+	double					v_offset;
+	double 					step;
+	int 					i;
+	int 					j;
+	int 					count;
+	int 					color;
+
+	struct s_spr_list		*next;
 }							t_spr_list;
 
 typedef struct 	s_all
@@ -102,10 +113,12 @@ typedef struct 	s_all
 	double 		coef;
 	double 		x;
 	double 		y_tmp;
-	double		*all_rays[];
+//	double		mas_rays[800];
 }				t_all;
 
 void		init_textures(t_all *all);
+void 		list_print (t_spr_list *list);
+void 		find_spr(t_all *all);
 //move.c
 int 		ft_move(int keycode, t_all *all);
 //colors.c
@@ -122,7 +135,7 @@ void 		ray_casting(t_all *all);
 //parcer.c
 double		ft_plr_vision(char map_vision);
 char 		**make_map(t_all *all);
-t_spr_list		*ft_spr_lstnew(int *x, int *y);
-void 		find_plr_sprite(t_all *all);
+t_spr_list		*ft_spr_lstnew(int x, int y, int len);
+void 		find_plr(t_all *all);
 
 #endif

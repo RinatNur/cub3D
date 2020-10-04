@@ -23,7 +23,7 @@ void 	ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb)
 	start_y = i * rec_per;
 	y = start_y;
 	x = start_x;
-	while (y < start_y + rec_per)
+ 	while (y < start_y + rec_per)
 	{
 		while (x < start_x + rec_per)
 		{
@@ -103,7 +103,7 @@ void 	check_and_print_texture(t_all *all)
 
 void 	draw_walls(t_all *all)
 {
-	all->ray.len *= cos(-all->ray.dir + all->plr.dir);
+	all->ray.len *= cos(all->plr.dir - all->ray.dir);
 	all->wall.start = WIN_H / 2 - (WIN_H  / all->ray.len * SCALE) /2;
 	all->wall.end = WIN_H / 2 + (WIN_H  / all->ray.len * SCALE) /2;
 	if (all->wall.end > WIN_H)
@@ -131,6 +131,69 @@ void 	ray_casting(t_all *all)
 	}
 }
 
+//void 	spr_struct_init(t_all *all, t_spr_list *sprite)
+//{
+//	sprite->spr_dir = atan2((sprite->spr_y - all->plr.y, sprite->spr_x - all->plr.y));
+//	while (sprite->spr_dir - all->plr.dir > M_PI)
+//		sprite->spr_dir -= 2 * M_PI;
+//	while (sprite->spr_dir - all->plr.dir < -M_PI)
+//		sprite->spr_dir += 2 * M_PI;
+//	sprite->spr_scr_size = WIN_H / sprite->len_from_plr;
+//	sprite->h_offset = (sprite->spr_dir - all->plr.dir) * WIN_W
+//					   / (M_PI /3) + WIN_W / 2 - sprite->spr_scr_size / 2;
+//	sprite->v_offset = WIN_H / 2 - sprite->spr_scr_size / 2;
+//	sprite->i = 0;
+//	sprite->j = 0;
+//	sprite->count = fabs(sprite->h_offset - all->mas_rays[0]);
+//	sprite->step = M_PI / (WIN_W * 3.0);
+//	sprite->color = 0;
+//}
+//
+//void 	draw_spr_res(t_all *all, t_spr_list *sprite)
+//{
+//	while (sprite->j < sprite->spr_scr_size)
+//	{
+//		if (sprite->v_offset + sprite->j < 0
+//		|| sprite->v_offset + sprite->j >= (int)WIN_H)
+//		{
+//			sprite->j++;
+//			continue;
+//		}
+//		sprite->color = get_color(&all->texture_S, sprite->i * SCALE / sprite->spr_scr_size,
+//				sprite->j * SCALE / sprite->spr_scr_size);
+//		if (sprite->color != 0x980088)
+//			my_mlx_pixel_put(all, sprite->h_offset + sprite->i,
+//					sprite->v_offset + sprite->j, sprite->color);
+//		sprite->j++;
+//	}
+//	sprite->step += M_PI / (WIN_W * 3.0);
+//	sprite->j = 0;
+//	sprite->i++;
+//	sprite->count++;
+//}
+//
+//void 	draw_spr(t_all *all, t_spr_list *sprite)
+//{
+//	spr_struct_init(all, all->spr_list);
+//	if (sprite->spr_scr_size > 4000)
+//		sprite->spr_scr_size = 0;
+//	while (sprite->i < sprite->spr_scr_size)
+//	{
+//		if (sprite->h_offset + sprite->i < 0 ||
+//		sprite->h_offset + sprite->i >= WIN_W)
+//		{
+//			sprite->i++;
+//			continue;
+//		}
+//		if (all->mas_rays[(int)sprite->h_offset + sprite->i] < sprite->len_from_plr)
+//		{
+//			sprite->i++;
+//			continue;
+//		}
+//		draw_spr_res(all, sprite);
+//	}
+//}
+
 void 	draw_img(t_all *all)
 {
 	mlx_destroy_image(all->win.mlx, all->win.img.img);
@@ -138,6 +201,7 @@ void 	draw_img(t_all *all)
 	all->win.img.addr = mlx_get_data_addr(all->win.img.img, &all->win.img.bits_per_pixel, &all->win.img.line_length,
 										  &all->win.img.endian);
 	ray_casting(all);
+//	draw_spr(all, all->spr_list);
 	draw_map(all);
 	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win, all->win.img.img, 0, 0);
 }
