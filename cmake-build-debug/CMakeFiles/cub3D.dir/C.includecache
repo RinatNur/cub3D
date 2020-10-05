@@ -8,7 +8,7 @@
 
 ../minilibx/mlx.h
 
-/Users/jheat/git_cub3D/cub3D.h
+/Users/jheat/cub3D_git/cub3D.h
 stdio.h
 -
 mlx.h
@@ -20,15 +20,15 @@ fcntl.h
 unistd.h
 -
 ./libft/libft.h
-/Users/jheat/git_cub3D/libft/libft.h
+/Users/jheat/cub3D_git/libft/libft.h
 ./get_next_line/get_next_line.h
-/Users/jheat/git_cub3D/get_next_line/get_next_line.h
+/Users/jheat/cub3D_git/get_next_line/get_next_line.h
 
-/Users/jheat/git_cub3D/draw.c
+/Users/jheat/cub3D_git/draw.c
 cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
+/Users/jheat/cub3D_git/cub3D.h
 
-/Users/jheat/git_cub3D/get_next_line/get_next_line.h
+/Users/jheat/cub3D_git/get_next_line/get_next_line.h
 stdlib.h
 -
 stdio.h
@@ -38,11 +38,15 @@ unistd.h
 fcntl.h
 -
 
-/Users/jheat/git_cub3D/libft/libft.h
+/Users/jheat/cub3D_git/libft/libft.h
 stdlib.h
 -
 unistd.h
 -
 stdio.h
 -
+
+/Users/jheat/cub3D_git/main.c
+cub3D.h
+/Users/jheat/cub3D_git/cub3D.h
 

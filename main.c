@@ -49,7 +49,6 @@ int		main(int argc, char **argv)
 	all.count = 0;
 	all.map = make_map(&all);
 	find_plr(&all);
-	find_spr(&all);
 	all.win.mlx = mlx_init();
 	all.win.mlx_win = mlx_new_window(all.win.mlx, WIN_W, WIN_H, "cub 3D!");
 	all.win.img.img = mlx_new_image(all.win.mlx, WIN_W, WIN_H);

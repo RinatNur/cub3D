@@ -121,26 +121,26 @@ void 	draw_walls(t_all *all)
 
 void 	ray_casting(t_all *all)
 {
+	all->mas_rays = (double *)malloc(sizeof(double) * WIN_W);
 	init_ray_begin(all);
 	while (all->ray.dir < all->ray.end)
 	{
 		one_ray_casting(all);
-		draw_walls(all);
+		all->mas_rays[(int)all->x] = all->ray.len;
 		all->x++;
+		draw_walls(all);
 		init_ray_cicle(all);
 	}
 }
 
 void 	spr_struct_init(t_all *all, t_spr_list *sprite)
 {
-	if ((all->mas_rays = (double *)malloc(sizeof(double) * WIN_W)))
-	{
-		sprite->spr_dir = atan2(sprite->spr_y - all->plr.y, sprite->spr_x - all->plr.y);
+		sprite->spr_dir = atan2(sprite->spr_y - all->plr.y, sprite->spr_x - all->plr.x);
 		while (sprite->spr_dir - all->plr.dir > M_PI)
 			sprite->spr_dir -= 2 * M_PI;
 		while (sprite->spr_dir - all->plr.dir < -M_PI)
 			sprite->spr_dir += 2 * M_PI;
-		sprite->spr_scr_size = WIN_H / sprite->len_from_plr;
+		sprite->spr_scr_size = WIN_H * 64 / sprite->len_from_plr;
 		sprite->h_offset = (sprite->spr_dir - all->plr.dir) * WIN_W
 						   / (M_PI / 3) + WIN_W / 2 - sprite->spr_scr_size / 2;
 		sprite->v_offset = WIN_H / 2 - sprite->spr_scr_size / 2;
@@ -149,12 +149,12 @@ void 	spr_struct_init(t_all *all, t_spr_list *sprite)
 		sprite->count = fabs(sprite->h_offset - all->mas_rays[0]);
 		sprite->step = M_PI / (WIN_W * 3.0);
 		sprite->color = 0;
-	}
+
 }
 
 void 	draw_spr_res(t_all *all, t_spr_list *sprite)
 {
-	while (sprite->j < sprite->spr_scr_size)
+	while (sprite->j < sprite->spr_scr_size - 2)
 	{
 		if (sprite->v_offset + sprite->j < 0
 		|| sprite->v_offset + sprite->j >= (int)WIN_H)
@@ -177,21 +177,29 @@ void 	draw_spr_res(t_all *all, t_spr_list *sprite)
 
 void 	draw_spr(t_all *all, t_spr_list *sprite)
 {
+	int i =0;
+
 	spr_struct_init(all, sprite);
-	if (sprite->spr_scr_size > 4000)
+	if (sprite->spr_scr_size > 2000)
 		sprite->spr_scr_size = 0;
+	while (i < WIN_W)
+	{
+		printf("mas_ray[%i] = %f\n", i, all->mas_rays[i]);
+		i++;
+	}
 	while (sprite->i < sprite->spr_scr_size)
 	{
-		if (sprite->h_offset + sprite->i < 0 ||
+   		if (sprite->h_offset + sprite->i < 0 ||
 		sprite->h_offset + sprite->i >= WIN_W)
 		{
 			sprite->i++;
 			continue;
 		}
-		if (all->mas_rays[(int)sprite->h_offset + sprite->i] < sprite->len_from_plr)
+
+		if (all->mas_rays[(int)((int)sprite->h_offset + sprite->i)] < sprite->len_from_plr)
 		{
-			sprite->i++;
-			continue;
+				sprite->i++;
+				continue;
 		}
 		draw_spr_res(all, sprite);
 	}
@@ -203,8 +211,13 @@ void 	draw_img(t_all *all)
 	all->win.img.img = mlx_new_image(all->win.mlx, WIN_W, WIN_H);
 	all->win.img.addr = mlx_get_data_addr(all->win.img.img, &all->win.img.bits_per_pixel, &all->win.img.line_length,
 										  &all->win.img.endian);
+	find_spr(all);
 	ray_casting(all);
-	draw_spr(all, all->spr_list);
+	while (all->spr_list)
+	{
+		draw_spr(all, all->spr_list);
+		all->spr_list = all->spr_list->next;
+	}
 	draw_map(all);
 	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win, all->win.img.img, 0, 0);
 }
