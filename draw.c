@@ -66,23 +66,32 @@ void 	one_ray_casting(t_all *all)
 {
 	while (1)
 	{
-		if (all->map[((int)all->ray.y) / (int)SCALE][((int) all->ray.x) / (int)SCALE] == '1')
-		{
-			break ;
-		}
-		all->ray.len += 0.25;
+		all->ray.len += 0.15;
 		all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
 		all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
-		my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 255, 255, 255));
+		if (all->map[((int)all->ray.y) / (int)SCALE][((int) all->ray.x) / (int)SCALE] == '1'
+			|| all->map[((int)all->ray.y + 1) / (int)SCALE][((int) all->ray.x + 1) / (int)SCALE] == '1'
+			&& all->map[((int)all->ray.y - 1) / (int)SCALE][((int) all->ray.x - 1) / (int)SCALE] == '1'
+			|| all->map[((int)all->ray.y - 1) / (int)SCALE][((int) all->ray.x + 1) / (int)SCALE] == '1'
+			&& all->map[((int)all->ray.y + 1) / (int)SCALE][((int) all->ray.x - 1) / (int)SCALE] == '1')
+			break ;
+
+		my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
 	}
 }
 
 void 	print_texture(t_all *all, double coordinate, t_texture *texture_type)
 {
-	all->coef = (double)texture_type->height / (double)all->wall.height;
+/*	all->coef = (double)texture_type->height / (all->wall.end - all->y_tmp);//(double)all->wall.height;
 	all->y_wall = (int)((all->wall.start - all->y_tmp) * all->coef);
 	all->x_wall = (int)coordinate % all->texture_NO.width;
-	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start, get_color(texture_type, (int)all->x_wall, (int)all->y_wall));
+	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
+			get_color(texture_type, (int)all->x_wall, (int)all->y_wall));*/
+//	all->coef = ;//(double)all->wall.height;
+	all->y_wall = (int)((all->wall.start - all->y_tmp) * 64 / (all->wall.end - all->y_tmp));
+	all->x_wall = (int)coordinate % all->texture_NO.width;
+	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
+					 get_color(texture_type, (int)all->x_wall, (int)all->y_wall));
 }
 
 void 	check_and_print_texture(t_all *all)
@@ -99,20 +108,24 @@ void 	check_and_print_texture(t_all *all)
 		else
 			print_texture(all, all->ray.y, &all->texture_WE);
 	}
+//	else
+//		print_texture(all, all->ray.y, &all->texture_EA);
 }
 
 void 	draw_walls(t_all *all)
 {
+	int i = -1;
 	all->ray.len *= cos(all->plr.dir - all->ray.dir);
 	all->wall.start = WIN_H / 2 - (WIN_H  / all->ray.len * SCALE) /2;
 	all->wall.end = WIN_H / 2 + (WIN_H  / all->ray.len * SCALE) /2;
-	if (all->wall.end > WIN_H)
-		all->wall.end = WIN_H - 1;
-	if (all->wall.start < 0)
-		all->wall.start = 0;
-	all->wall.height = all->wall.end - all->wall.start;
 	all->y_tmp = all->wall.start;
-	while (all->wall.start < all->wall.end && all->wall.end < WIN_W)
+	all->wall.height = all->wall.end - all->wall.start;
+	while (i++ < all->wall.start + 5)
+		my_mlx_pixel_put(&all->win.img, (int)all->x, i, get_trgb(0, 46, 71, 213));
+	i = all->wall.end - 5;
+	while (i++ < WIN_H)
+		my_mlx_pixel_put(&all->win.img, (int)all->x, i, get_trgb(0, 45, 45, 45));
+	while (all->wall.start < all->wall.end && all->wall.start < WIN_H)
 	{
 		check_and_print_texture(all);
 		all->wall.start++;
@@ -182,11 +195,6 @@ void 	draw_spr(t_all *all, t_spr_list *sprite)
 	spr_struct_init(all, sprite);
 	if (sprite->spr_scr_size > 2000)
 		sprite->spr_scr_size = 0;
-	while (i < WIN_W)
-	{
-		printf("mas_ray[%i] = %f\n", i, all->mas_rays[i]);
-		i++;
-	}
 	while (sprite->i < sprite->spr_scr_size)
 	{
    		if (sprite->h_offset + sprite->i < 0 ||
@@ -195,7 +203,6 @@ void 	draw_spr(t_all *all, t_spr_list *sprite)
 			sprite->i++;
 			continue;
 		}
-
 		if (all->mas_rays[(int)((int)sprite->h_offset + sprite->i)] < sprite->len_from_plr)
 		{
 				sprite->i++;

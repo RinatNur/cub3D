@@ -25,10 +25,14 @@ static void 	move_left_or_right(int keycode, t_all *all)
 }
 
 static void 	move_up_or_down(int keycode, t_all *all)
-{
-	if (UP) {
-		if ((all->map)[(int)((all->plr.y + sin(all->plr.dir) * 21) / SCALE)]
-			[(int)((all->plr.x + cos(all->plr.dir) * 21) / SCALE)] != '1')
+{	int 	i, j;
+	double  k, n;
+
+	if (UP)
+	{
+		i = (int)((all->plr.y + sin(all->plr.dir) * 21) / SCALE);
+		j = (int)((all->plr.x + cos(all->plr.dir) * 21) / SCALE);
+		if (all->map[i][j] != '1')
 		{
 			all->plr.x += cos(all->plr.dir) * 21;
 			all->plr.y += sin(all->plr.dir) * 21;
