@@ -1,17 +1,5 @@
 #include "cub3D.h"
 
-void 	init_ray_begin(t_all *all)
-{
-	all->x = 0;
-	all->ray.start = all->plr.dir - FOV/2;
-	all->ray.end = all->plr.dir + FOV/2;
-	all->ray.len = 0;
-	all->ray.x = all->plr.x;
-	all->ray.y = all->plr.y;
-	all->ray.dir = all->ray.start;
-
-}
-
 void 	ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb)
 {
 	double		start_x;
@@ -54,6 +42,18 @@ void		draw_map(t_all *all)
 	}
 }
 
+void 	init_ray_begin(t_all *all)
+{
+	all->x = 0;
+	all->ray.start = all->plr.dir - FOV/2;
+	all->ray.end = all->plr.dir + FOV/2;
+	all->ray.len = 0;
+	all->ray.x = all->plr.x;
+	all->ray.y = all->plr.y;
+	all->ray.dir = all->ray.start;
+
+}
+
 void 	init_ray_cicle(t_all *all)
 {
 	all->ray.len = 0;
@@ -66,17 +66,17 @@ void 	one_ray_casting(t_all *all)
 {
 	while (1)
 	{
-		all->ray.len += 0.15;
-		all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
-		all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
 		if (all->map[((int)all->ray.y) / (int)SCALE][((int) all->ray.x) / (int)SCALE] == '1'
 			|| all->map[((int)all->ray.y + 1) / (int)SCALE][((int) all->ray.x + 1) / (int)SCALE] == '1'
 			&& all->map[((int)all->ray.y - 1) / (int)SCALE][((int) all->ray.x - 1) / (int)SCALE] == '1'
 			|| all->map[((int)all->ray.y - 1) / (int)SCALE][((int) all->ray.x + 1) / (int)SCALE] == '1'
 			&& all->map[((int)all->ray.y + 1) / (int)SCALE][((int) all->ray.x - 1) / (int)SCALE] == '1')
 			break ;
-
-		my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
+		all->ray.len += 0.15;
+		all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
+		all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
+//
+//		my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
 	}
 }
 
@@ -88,7 +88,7 @@ void 	print_texture(t_all *all, double coordinate, t_texture *texture_type)
 	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
 			get_color(texture_type, (int)all->x_wall, (int)all->y_wall));*/
 //	all->coef = ;//(double)all->wall.height;
-	all->y_wall = (int)((all->wall.start - all->y_tmp) * 64 / (all->wall.end - all->y_tmp));
+	all->y_wall = (int)((all->wall.start - all->y_tmp) * texture_type->height / (all->wall.end - all->y_tmp));
 	all->x_wall = (int)coordinate % all->texture_NO.width;
 	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
 					 get_color(texture_type, (int)all->x_wall, (int)all->y_wall));
@@ -98,15 +98,15 @@ void 	check_and_print_texture(t_all *all)
 {
 	if (all->wall.start >= 0 && all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x - 0.25 * cos(all->ray.dir)) / (int)SCALE] == '1')
 		if(all->map[(int)(all->ray.y + 32) / (int)SCALE][(int)all->ray.x / (int)(SCALE)] == '1')
-			print_texture(all, all->ray.x, &all->texture_NO);
+			print_texture(all, all->ray.x, &all->texture_EA);
 		else
-			print_texture(all, all->ray.x, &all->texture_SO);
+			print_texture(all, all->ray.x, &all->texture_WE);
 	else if (all->wall.start >= 0)
 	{
 		if(all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x + 32) / (int)(SCALE)] == '1')
-			print_texture(all, all->ray.y, &all->texture_EA);
+			print_texture(all, all->ray.y, &all->texture_NO);
 		else
-			print_texture(all, all->ray.y, &all->texture_WE);
+			print_texture(all, all->ray.y, &all->texture_SO);
 	}
 //	else
 //		print_texture(all, all->ray.y, &all->texture_EA);
@@ -134,6 +134,8 @@ void 	draw_walls(t_all *all)
 
 void 	ray_casting(t_all *all)
 {
+	int i = 0;
+	double j =0;
 	all->mas_rays = (double *)malloc(sizeof(double) * WIN_W);
 	init_ray_begin(all);
 	while (all->ray.dir < all->ray.end)
@@ -143,6 +145,25 @@ void 	ray_casting(t_all *all)
 		all->x++;
 		draw_walls(all);
 		init_ray_cicle(all);
+	}
+	init_ray_begin(all);
+	while (all->ray.dir < all->ray.end)
+	{
+		while (all->ray.len < all->mas_rays[i])
+		{
+			all->ray.len += 0.25;
+			all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
+			all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
+			if (abs((int)(all->mas_rays[i - 3] - all->mas_rays[i + 3] )) < SCALE
+				&& abs((int)(all->mas_rays[i] - all->mas_rays[i - 3] )) > SCALE)
+			{
+				all->mas_rays[i] = all->mas_rays[i - 3];
+				all->ray.len = all->mas_rays[i - 3];
+			}
+			my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
+		}
+		init_ray_cicle(all);
+		i++;
 	}
 }
 

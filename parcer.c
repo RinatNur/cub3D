@@ -145,5 +145,5 @@ void 		find_spr(t_all *all)
 		i++;
 	}
 	sort_spr(all->spr_list);
-	list_print(all->spr_list);
+//	list_print(all->spr_list);
 }
