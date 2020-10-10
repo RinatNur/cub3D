@@ -35,12 +35,6 @@ typedef struct		s_ray {
 	double 		len;
 }				t_ray;
 
-//typedef struct		s_sprite {
-//	double 		x;
-//	double 		y;
-//	double 		dir;
-//}				t_sprite;
-
 typedef struct		s_wall {
 	int			start;
 	int 		end;
@@ -106,6 +100,17 @@ typedef struct 	s_all
 	char 		**map;
 	char 		*plr_vis;
 	char 		*line;
+	//parcing
+	char 		*no_text;
+	char 		*so_text;
+	char 		*we_text;
+	char 		*ea_text;
+	char 		*s_text;
+	int 		win_w;
+	int 		win_h;
+	int 		floor_col;
+	int 		ceiling_col;
+	//
 	int 		fd;
 	int			x_wall;
 	int 		y_wall;
@@ -133,6 +138,8 @@ void		draw_img(t_all *all);
 void 		one_ray_casting(t_all *all);
 void 		ray_casting(t_all *all);
 //parcer.c
+void 	ft_parcer(t_all *all);
+//spr_and_map
 double		ft_plr_vision(char map_vision);
 char 		**make_map(t_all *all);
 t_spr_list		*ft_spr_lstnew(int x, int y, int len);

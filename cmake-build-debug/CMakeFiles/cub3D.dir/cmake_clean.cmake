@@ -45,6 +45,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/main.c.o"
   "CMakeFiles/cub3D.dir/move.c.o"
   "CMakeFiles/cub3D.dir/parcer.c.o"
+  "CMakeFiles/cub3D.dir/spr_and_map.c.o"
   "cub3D"
   "cub3D.pdb"
 )

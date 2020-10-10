@@ -50,6 +50,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/git_cub3D/main.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/main.c.o"
   "/Users/jheat/git_cub3D/move.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/move.c.o"
   "/Users/jheat/git_cub3D/parcer.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/parcer.c.o"
+  "/Users/jheat/git_cub3D/spr_and_map.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/spr_and_map.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

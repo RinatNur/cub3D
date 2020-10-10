@@ -233,6 +233,9 @@
 		<Unit filename="/Users/jheat/git_cub3D/parcer.c">
 			<Option target="cub3D"/>
 		</Unit>
+		<Unit filename="/Users/jheat/git_cub3D/spr_and_map.c">
+			<Option target="cub3D"/>
+		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

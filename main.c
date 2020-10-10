@@ -47,18 +47,18 @@ int		main(int argc, char **argv)
 	t_all		all;
 
 	all.count = 0;
-	all.map = make_map(&all);
+//	all.map = make_map(&all);
 	find_plr(&all);
-	find_spr(&all);
-	all.win.mlx = mlx_init();
-	all.win.mlx_win = mlx_new_window(all.win.mlx, WIN_W, WIN_H, "cub 3D!");
-	all.win.img.img = mlx_new_image(all.win.mlx, WIN_W, WIN_H);
-	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.bits_per_pixel, &all.win.img.line_length,
-										  &all.win.img.endian);
-	init_textures(&all);
-	draw_img(&all);
-	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win, all.win.img.img, 0, 0);
-	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
-	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);
-	mlx_loop(all.win.mlx);
+	ft_parcer(&all);
+//	all.win.mlx = mlx_init();
+//	all.win.mlx_win = mlx_new_window(all.win.mlx, WIN_W, WIN_H, "cub 3D!");
+//	all.win.img.img = mlx_new_image(all.win.mlx, WIN_W, WIN_H);
+//	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.bits_per_pixel, &all.win.img.line_length,
+//										  &all.win.img.endian);
+//	init_textures(&all);
+//	draw_img(&all);
+//	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win, all.win.img.img, 0, 0);
+//	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
+//	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);
+//	mlx_loop(all.win.mlx);
 }

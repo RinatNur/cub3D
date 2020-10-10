@@ -8,7 +8,7 @@ include_directories(.)
 include_directories(get_next_line)
 include_directories(libft)
 include_directories(minilibx)
-include_directories(minilibx)
+
 
 add_executable(cub3D
         get_next_line/get_next_line.c
@@ -59,4 +59,4 @@ add_executable(cub3D
         cub3D.h
         main.c
         move.c
-        parcer.c)
+        spr_and_map.c parcer.c)
