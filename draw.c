@@ -121,10 +121,10 @@ void 	draw_walls(t_all *all)
 	all->y_tmp = all->wall.start;
 	all->wall.height = all->wall.end - all->wall.start;
 	while (i++ < all->wall.start + 5)
-		my_mlx_pixel_put(&all->win.img, (int)all->x, i, get_trgb(0, 46, 71, 213));
+		my_mlx_pixel_put(&all->win.img, (int)all->x, i, all->ceiling_col);
 	i = all->wall.end - 5;
 	while (i++ < WIN_H)
-		my_mlx_pixel_put(&all->win.img, (int)all->x, i, get_trgb(0, 45, 45, 45));
+		my_mlx_pixel_put(&all->win.img, (int)all->x, i, all->floor_col);
 	while (all->wall.start < all->wall.end && all->wall.start < WIN_H)
 	{
 		check_and_print_texture(all);

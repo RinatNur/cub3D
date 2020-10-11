@@ -1,17 +1,11 @@
-    R   800 600
-                    NO   N0./texteures/redbrick.xpm
-            SO ./texteures/wood.xpm
-
-                WE ./texteures/mossy.xpm
-
-    EA ./texteures/greystone.xpm
-
-S ./texteures/sprite.xpm
-
+R     800   600
+   NO ../textures/redbrick.xpm
+    SO ../textures/wood.xpm
+   WE ../textures/mossy.xpm
+EA ../textures/greystone.xpm
+S ../textures/sprite.xpm
 F   45,45,45
-
-C   46,71,213
-
+C    46,71,213
         1111111111111111111111111
         100000000011N000000000001
         1011000001110000000000001

@@ -101,6 +101,7 @@ typedef struct 	s_all
 	char 		*plr_vis;
 	char 		*line;
 	//parcing
+	char 		*r_text;
 	char 		*no_text;
 	char 		*so_text;
 	char 		*we_text;
@@ -108,8 +109,8 @@ typedef struct 	s_all
 	char 		*s_text;
 	int 		win_w;
 	int 		win_h;
-	int 		floor_col;
-	int 		ceiling_col;
+	int		floor_col;
+	int		ceiling_col;
 	//
 	int 		fd;
 	int			x_wall;
@@ -138,6 +139,7 @@ void		draw_img(t_all *all);
 void 		one_ray_casting(t_all *all);
 void 		ray_casting(t_all *all);
 //parcer.c
+void		exit_err(char *str, int code);
 void 	ft_parcer(t_all *all);
 //spr_and_map
 double		ft_plr_vision(char map_vision);

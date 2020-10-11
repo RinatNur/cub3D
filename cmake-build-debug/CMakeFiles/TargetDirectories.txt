@@ -1,3 +1,3 @@
-/Users/jheat/cub3D_git/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/jheat/cub3D_git/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/jheat/cub3D_git/cmake-build-debug/CMakeFiles/cub3D.dir
+/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir
