@@ -55,8 +55,8 @@ int		main(int argc, char **argv)
 	ft_parcer(&all);
 	find_plr(&all);
 	all.win.mlx = mlx_init();
-	all.win.mlx_win = mlx_new_window(all.win.mlx, WIN_W, WIN_H, "cub 3D!");
-	all.win.img.img = mlx_new_image(all.win.mlx, WIN_W, WIN_H);
+	all.win.mlx_win = mlx_new_window(all.win.mlx, all.win_w, all.win_h, "cub 3D!");
+	all.win.img.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h);
 	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.bits_per_pixel, &all.win.img.line_length,
 										  &all.win.img.endian);
 	init_textures(&all);

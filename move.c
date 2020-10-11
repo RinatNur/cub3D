@@ -15,7 +15,7 @@ static void 	move_left_or_right(int keycode, t_all *all)
 		if (all->map[(int)((all->plr.y + cos(all->plr.dir) * 21) / SCALE)][(int)(all->plr.x / SCALE)] != '1')
 			all->plr.y += cos(all->plr.dir) * 21;
 		if (all->map[(int)(all->plr.y / SCALE)][(int)((all->plr.x - sin(all->plr.dir) * 21) / SCALE)] != '1')
-			all->plr.x += sin(all->plr.dir) * 21;
+			all->plr.x -= sin(all->plr.dir) * 21;
 		draw_img(all);
 	}
 }

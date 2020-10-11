@@ -15,7 +15,7 @@ void 	ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb)
 	{
 		while (x < start_x + rec_per)
 		{
-			my_mlx_pixel_put(&all->win.img, (int)x, (int)y, trgb);
+			my_mlx_pixel_put(all, &all->win.img, (int)x, (int)y, trgb);
 			x++;
 		}
 		x = start_x;
@@ -59,7 +59,7 @@ void 	init_ray_cicle(t_all *all)
 	all->ray.len = 0;
 	all->ray.x = all->plr.x;
 	all->ray.y = all->plr.y;
-	all->ray.dir += FOV / WIN_W;
+	all->ray.dir += FOV / all->win_w;
 }
 
 void 	one_ray_casting(t_all *all)
@@ -76,7 +76,7 @@ void 	one_ray_casting(t_all *all)
 		all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
 		all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
 //
-//		my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
+//		my_mlx_pixel_put(all, &all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
 	}
 }
 
@@ -85,12 +85,12 @@ void 	print_texture(t_all *all, double coordinate, t_texture *texture_type)
 /*	all->coef = (double)texture_type->height / (all->wall.end - all->y_tmp);//(double)all->wall.height;
 	all->y_wall = (int)((all->wall.start - all->y_tmp) * all->coef);
 	all->x_wall = (int)coordinate % all->texture_NO.width;
-	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
+	my_mlx_pixel_put(all, &all->win.img, (int)all->x, all->wall.start,
 			get_color(texture_type, (int)all->x_wall, (int)all->y_wall));*/
 //	all->coef = ;//(double)all->wall.height;
 	all->y_wall = (int)((all->wall.start - all->y_tmp) * texture_type->height / (all->wall.end - all->y_tmp));
 	all->x_wall = (int)coordinate % all->texture_NO.width;
-	my_mlx_pixel_put(&all->win.img, (int)all->x, all->wall.start,
+	my_mlx_pixel_put(all, &all->win.img, (int)all->x, all->wall.start,
 					 get_color(texture_type, (int)all->x_wall, (int)all->y_wall));
 }
 
@@ -116,16 +116,16 @@ void 	draw_walls(t_all *all)
 {
 	int i = -1;
 	all->ray.len *= cos(all->plr.dir - all->ray.dir);
-	all->wall.start = WIN_H / 2 - (WIN_H  / all->ray.len * SCALE) /2;
-	all->wall.end = WIN_H / 2 + (WIN_H  / all->ray.len * SCALE) /2;
+	all->wall.start = all->win_h / 2 - (all->win_h  / all->ray.len * SCALE) /2;
+	all->wall.end = all->win_h / 2 + (all->win_h  / all->ray.len * SCALE) /2;
 	all->y_tmp = all->wall.start;
 	all->wall.height = all->wall.end - all->wall.start;
 	while (i++ < all->wall.start + 5)
-		my_mlx_pixel_put(&all->win.img, (int)all->x, i, all->ceiling_col);
+		my_mlx_pixel_put(all, &all->win.img, (int)all->x, i, all->ceiling_col);
 	i = all->wall.end - 5;
-	while (i++ < WIN_H)
-		my_mlx_pixel_put(&all->win.img, (int)all->x, i, all->floor_col);
-	while (all->wall.start < all->wall.end && all->wall.start < WIN_H)
+	while (i++ < all->win_h)
+		my_mlx_pixel_put(all, &all->win.img, (int)all->x, i, all->floor_col);
+	while (all->wall.start < all->wall.end && all->wall.start < all->win_h)
 	{
 		check_and_print_texture(all);
 		all->wall.start++;
@@ -136,7 +136,7 @@ void 	ray_casting(t_all *all)
 {
 	int i = 0;
 	double j =0;
-	all->mas_rays = (double *)malloc(sizeof(double) * WIN_W);
+	all->mas_rays = (double *)malloc(sizeof(double) * all->win_w);
 	init_ray_begin(all);
 	while (all->ray.dir < all->ray.end)
 	{
@@ -160,7 +160,7 @@ void 	ray_casting(t_all *all)
 				all->mas_rays[i] = all->mas_rays[i - 3];
 				all->ray.len = all->mas_rays[i - 3];
 			}
-			my_mlx_pixel_put(&all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
+			my_mlx_pixel_put(all, &all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
 		}
 		init_ray_cicle(all);
 		i++;
@@ -174,14 +174,14 @@ void 	spr_struct_init(t_all *all, t_spr_list *sprite)
 			sprite->spr_dir -= 2 * M_PI;
 		while (sprite->spr_dir - all->plr.dir < -M_PI)
 			sprite->spr_dir += 2 * M_PI;
-		sprite->spr_scr_size = WIN_H * 64 / sprite->len_from_plr;
-		sprite->h_offset = (sprite->spr_dir - all->plr.dir) * WIN_W
-						   / (M_PI / 3) + WIN_W / 2 - sprite->spr_scr_size / 2;
-		sprite->v_offset = WIN_H / 2 - sprite->spr_scr_size / 2;
+		sprite->spr_scr_size = all->win_h * 64 / sprite->len_from_plr;
+		sprite->h_offset = (sprite->spr_dir - all->plr.dir) * all->win_w
+						   / (M_PI / 3) + all->win_w / 2 - sprite->spr_scr_size / 2;
+		sprite->v_offset = all->win_h / 2 - sprite->spr_scr_size / 2;
 		sprite->i = 0;
 		sprite->j = 0;
 		sprite->count = fabs(sprite->h_offset - all->mas_rays[0]);
-		sprite->step = M_PI / (WIN_W * 3.0);
+		sprite->step = M_PI / (all->win_w * 3.0);
 		sprite->color = 0;
 
 }
@@ -191,7 +191,7 @@ void 	draw_spr_res(t_all *all, t_spr_list *sprite)
 	while (sprite->j < sprite->spr_scr_size - 2)
 	{
 		if (sprite->v_offset + sprite->j < 0
-		|| sprite->v_offset + sprite->j >= (int)WIN_H)
+		|| sprite->v_offset + sprite->j >= (int)all->win_h)
 		{
 			sprite->j++;
 			continue;
@@ -199,11 +199,11 @@ void 	draw_spr_res(t_all *all, t_spr_list *sprite)
 		sprite->color = get_color(&all->texture_S, sprite->i * SCALE / sprite->spr_scr_size,
 				sprite->j * SCALE / sprite->spr_scr_size);
 		if (sprite->color != 0x980088)
-			my_mlx_pixel_put(&all->win.img, sprite->h_offset + sprite->i, // changed all to &all->win.img
+			my_mlx_pixel_put(all, &all->win.img, sprite->h_offset + sprite->i, // changed all to &all->win.img
 					sprite->v_offset + sprite->j, sprite->color);
 		sprite->j++;
 	}
-	sprite->step += M_PI / (WIN_W * 3.0);
+	sprite->step += M_PI / (all->win_w * 3.0);
 	sprite->j = 0;
 	sprite->i++;
 	sprite->count++;
@@ -219,7 +219,7 @@ void 	draw_spr(t_all *all, t_spr_list *sprite)
 	while (sprite->i < sprite->spr_scr_size)
 	{
    		if (sprite->h_offset + sprite->i < 0 ||
-		sprite->h_offset + sprite->i >= WIN_W)
+		sprite->h_offset + sprite->i >= all->win_w)
 		{
 			sprite->i++;
 			continue;
@@ -236,7 +236,7 @@ void 	draw_spr(t_all *all, t_spr_list *sprite)
 void 	draw_img(t_all *all)
 {
 	mlx_destroy_image(all->win.mlx, all->win.img.img);
-	all->win.img.img = mlx_new_image(all->win.mlx, WIN_W, WIN_H);
+	all->win.img.img = mlx_new_image(all->win.mlx, all->win_w, all->win_h);
 	all->win.img.addr = mlx_get_data_addr(all->win.img.img, &all->win.img.bits_per_pixel, &all->win.img.line_length,
 										  &all->win.img.endian);
 	find_spr(all);

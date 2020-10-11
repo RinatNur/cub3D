@@ -8,10 +8,6 @@
 
 ../minilibx/mlx.h
 
-/Users/jheat/git_cub3D/colors.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
 /Users/jheat/git_cub3D/cub3D.h
 stdio.h
 -
@@ -28,10 +24,6 @@ unistd.h
 ./get_next_line/get_next_line.h
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
 
-/Users/jheat/git_cub3D/draw.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
 stdlib.h
 -
@@ -50,19 +42,7 @@ unistd.h
 stdio.h
 -
 
-/Users/jheat/git_cub3D/main.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
 /Users/jheat/git_cub3D/move.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
-/Users/jheat/git_cub3D/parcer.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
-/Users/jheat/git_cub3D/spr_and_map.c
 cub3D.h
 /Users/jheat/git_cub3D/cub3D.h
 

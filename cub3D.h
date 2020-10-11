@@ -8,8 +8,8 @@
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
 
-# define WIN_W 800
-# define WIN_H 600
+//# define WIN_W 800
+//# define WIN_H 600
 # define FOV M_PI/3
 # define SCALE (double)64
 # define LEFT keycode == 0
@@ -129,7 +129,7 @@ void 		find_spr(t_all *all);
 int 		ft_move(int keycode, t_all *all);
 //colors.c
 int 		get_trgb(int t, int r, int g, int b);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		my_mlx_pixel_put(t_all *all, t_data *data, int x, int y, int color);
 int         get_color(t_texture *texture, int x, int y);
 //draw.c
 void 		init_ray_begin(t_all *all);
