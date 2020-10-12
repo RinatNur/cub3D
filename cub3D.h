@@ -1,12 +1,13 @@
 #ifndef _CUB_3_D_
 # define _CUB_3_D_
 # include <stdio.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
+# include "./minilibx_dynamic/mlx.h"
 
 //# define WIN_W 800
 //# define WIN_H 600
@@ -99,6 +100,7 @@ typedef struct 	s_all
 	t_plr 		plr;
 	char 		**map;
 	char 		*plr_vis;
+	char 		*map_sym;
 	char 		*line;
 	//parcing
 	char 		*r_text;
@@ -112,6 +114,8 @@ typedef struct 	s_all
 	int		floor_col;
 	int		ceiling_col;
 	//
+	int 		scr_size_x;
+	int 		scr_size_y;
 	int 		fd;
 	int			x_wall;
 	int 		y_wall;

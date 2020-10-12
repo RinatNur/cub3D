@@ -48,7 +48,7 @@ void 	find_plr(t_all *all)
 {
 	int 	i;
 	int 	j;
-
+	int flag = 0;
 	i = 0;
 	all->plr_vis = "NSEW";
 	while (all->map[i])
@@ -61,11 +61,14 @@ void 	find_plr(t_all *all)
 				all->plr.x = SCALE * j + (SCALE / 2);
 				all->plr.y = SCALE * i + (SCALE / 2);
 				all->plr.dir = ft_plr_vision(all->map[i][j]);
+				flag = 1;
 			}
 			j++;
 		}
 		i++;
 	}
+	if (flag == 0)
+		exit_err("No player in map", 4);
 }
 
 void 		sort_spr(t_spr_list *ph)
@@ -102,7 +105,7 @@ void 		find_spr(t_all *all)
 {
 	int 	i = 0;
 	int 	j;
-	int 	x = 0, y = 0, len = 0;
+	int 	x, y, len;
 
 	while (all->map[i])
 	{
@@ -121,5 +124,4 @@ void 		find_spr(t_all *all)
 		i++;
 	}
 	sort_spr(all->spr_list);
-//	list_print(all->spr_list);
 }

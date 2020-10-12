@@ -11,8 +11,8 @@ void 	init_textures(t_all *all)
 	all->texture_EA.img = mlx_xpm_file_to_image(all->win.mlx, all->ea_text, &all->texture_EA.width, &all->texture_EA.height);
 
 	all->texture_S.img = mlx_xpm_file_to_image(all->win.mlx, all->s_text, &all->texture_S.width, &all->texture_S.height);
-//	if (all->texture_NO.img && all->texture_SO.img && all->texture_WE.img && all->texture_EA.img && all->texture_S.img)
-//	{
+	if (all->texture_NO.img && all->texture_SO.img && all->texture_WE.img && all->texture_EA.img && all->texture_S.img)
+	{
 	all->texture_S.addr = mlx_get_data_addr(all->texture_S.img, &all->texture_S.bits_per_pixel, &all->texture_S.line_length,
 											 &all->texture_S.endian);
 	all->texture_NO.addr = mlx_get_data_addr(all->texture_NO.img, &all->texture_NO.bits_per_pixel, &all->texture_NO.line_length,
@@ -23,8 +23,8 @@ void 	init_textures(t_all *all)
 											 &all->texture_WE.endian);
 	all->texture_EA.addr = mlx_get_data_addr(all->texture_EA.img, &all->texture_EA.bits_per_pixel, &all->texture_EA.line_length,
 											 &all->texture_EA.endian);
-//	} else
-//		exit_err("Not valid textures", 12);
+	} else
+		exit_err("Not valid textures", 12);
 }
 
 static int		close_with_red_x(int code)
@@ -51,7 +51,6 @@ int		main(int argc, char **argv)
 	t_all		all;
 
 	all.count = 0;
-//	all.map = make_map(&all);
 	ft_parcer(&all);
 	find_plr(&all);
 	all.win.mlx = mlx_init();

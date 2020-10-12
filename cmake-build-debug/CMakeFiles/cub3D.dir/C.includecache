@@ -6,12 +6,8 @@
 
 #IncludeRegexTransform: 
 
-../minilibx/mlx.h
-
 /Users/jheat/git_cub3D/cub3D.h
 stdio.h
--
-mlx.h
 -
 math.h
 -
@@ -23,6 +19,8 @@ unistd.h
 /Users/jheat/git_cub3D/libft/libft.h
 ./get_next_line/get_next_line.h
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
+./minilibx_dynamic/mlx.h
+/Users/jheat/git_cub3D/minilibx_dynamic/mlx.h
 
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
 stdlib.h
@@ -42,7 +40,9 @@ unistd.h
 stdio.h
 -
 
-/Users/jheat/git_cub3D/move.c
+/Users/jheat/git_cub3D/minilibx_dynamic/mlx.h
+
+/Users/jheat/git_cub3D/parcer.c
 cub3D.h
 /Users/jheat/git_cub3D/cub3D.h
 

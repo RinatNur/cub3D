@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.16.5)
 project(cub3D C)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework OpenGL -framework AppKit -I minilibx -L../minilibx -lmlx")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -framework OpenGL -framework AppKit -I minilibx_dynamic -L../minilibx_dynamic -lmlx")
 
 include_directories(.)
 include_directories(get_next_line)
 include_directories(libft)
-include_directories(minilibx)
+include_directories(minilibx_dynamic)
 
 
 add_executable(cub3D
