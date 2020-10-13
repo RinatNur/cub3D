@@ -30,46 +30,43 @@ int 	is_ident_true(t_all *all)
 	return(0);
 }
 
-int 	is_space_around_zero(char **map, int i, int j, int end)
+int 	is_space_around_0_or_2(char **map, int i, int j)
 {
 	char 	c = ' ';
-	if (i == 3 && j == 31)
-		i = 3;
-	if (map[i][j] == '0' && i > 0 && i < end && j > 0 && j < (ft_strlen(map[i]) - 1) &&
-			((map[i][j - 1] == c || map[i][j+1] == c) || (map[i - 1][j] == c || map[i - 1][j] == '\0')
-			|| (map[i + 1][j] == c || map[i + 1][j] == '\0')))
-		return (0);
-	return(1);
-}
+	int 	len_up, len_down ,len, len_end;
+	int 	end = 0;
 
-int		is_sprite_out(char **map, int i, int j, int end)
-{
-	char 	c = ' ';
-	if (map[0][j] == '2' || map[end][j] == '2' || map[i][0] == '2' || map[i][ft_strlen(map[i]) - 1] == '2'
-		|| (map[i][j] == '2' && i > 0 && i < end && j > 0 && j < (ft_strlen(map[i]) - 1)
-		&& ((map[i][j - 1] == c || map[i][j+1] == c) || (map[i - 1][j] == c || map[i - 1][j] == '\0')
-		|| (map[i + 1][j] == c || map[i + 1][j] == '\0'))))
-		return(0);
-	return(1);
+	while (map[end++]);
+	end -= 2;
+	len = (int)ft_strlen(map[i]) - 1;
+	len_up = (i > 0) ? (int)(ft_strlen(map[i - 1]) - 1) : 0;
+	len_down = (i < end) ? (int)(ft_strlen(map[i + 1]) - 1) : 0;
+	len_end = (int)ft_strlen(map[end]) - 1;
+	if (!ft_strchr(" 012NSEW", (int)map[i][j])
+		|| map[0][j] == '0' || map[0][j] == '2'
+		|| (len_end >= j && map[end][j] == '0') || (len_end >= j && map[end][j] == '0')
+		|| map[i][0] == '0' || map[i][0] == '2'
+		|| map[i][len] == '0' || map[i][len] == '2'
+		|| (i > 0 && i < end && j > 0 && j < len
+		&& ((map[i][j] == '0'
+				&& (map[i][j - 1] == c || map[i][j+1] == c || map[i - 1][j] == c || len_up < j
+				|| map[i + 1][j] == c || len_down < j))
+			|| (map[i][j] == '2'
+				&& (map[i][j - 1] == c || map[i][j+1] == c || map[i - 1][j] == c || len_up < j
+		   		|| map[i + 1][j] == c || len_down < j)))))
+		exit_err("Not valid map", 2);
 }
 
 void 	is_map_valid(t_all *all, char **map)
 {
 	int i = 0, j = 0;
-	int end = 0;
-	while (map[end++]);
-	end -= 2;
+
 	while (map[i] != NULL)
 	{
+
 		while (map[i][j])
 		{
-			if (ft_strchr(all->map_sym, (int)map[i][j]) && map[0][j] != '0' && map[end][j] != '0'
-				&& map[i][0] != '0' && map[i][ft_strlen(map[i]) - 1] != '0'
-				&& is_space_around_zero(map, i, j, end) && is_sprite_out(map, i, j, end))
-			{
-
-			} else
-				exit_err("Not valid map", 2);
+			is_space_around_0_or_2(map, i, j);
 			j++;
 		}
 		j = 0;
@@ -84,7 +81,6 @@ char 	**make_map(t_all *all)
 	int 	size;
 	t_list *tmp;
 
-	all->map_sym = " 012NSEW\n";
 	size = ft_lstsize(all->head);
 	map = ft_calloc(size + 1, sizeof(char *));
 	i = -1;
@@ -96,7 +92,6 @@ char 	**make_map(t_all *all)
 		tmp = tmp->next;
 	}
 	map[++i] = NULL;
-//	i = -1;
 	is_map_valid(all, map);
 	return(map);
 }
@@ -148,10 +143,6 @@ void 	get_scr_size(t_all *all, char *line)
 
 	all->win_w = (all->win_w > all->scr_size_x) ? all->scr_size_x : all->win_w;
 	all->win_h = (all->win_h > all->scr_size_y) ? all->scr_size_y : all->win_h;
-
-//	if (all->win_w < 0 && all->win_h < 0)
-//		exit_err("Screen size is not valid", 3);
-	i = 0;
 }
 
 int		get_F_and_C_col(t_all *all, char *line)
@@ -189,7 +180,7 @@ void check_line(t_all *all, char *line)
 		all->floor_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
 	else if (*line == 'C' && *(line + 1) == ' ' && all->ceiling_col == -1)
 		all->ceiling_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
-	else if (is_ident_true(all) && !(*line == 'C' && *(line + 1) == ' '))//при передаче аргумента С 2-ой раз эта строка не передаётся в мап
+	else if (is_ident_true(all) && !(*line == 'C' && *(line + 1) == ' '))
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
 	else
 		exit_err("File is not valid", 12);
@@ -199,7 +190,7 @@ void 	ft_parcer(t_all *all)
 {
 	init_parcer(all);
 	int 	fd;
-	int 	i = 0;
+	int 	i = 0, j = 0;
 
 	fd = open ("../map.cub", O_RDONLY);
 	while ((get_next_line(fd, &all->line)) > 0)
@@ -210,10 +201,11 @@ void 	ft_parcer(t_all *all)
 	if (*all->line != '\0')// || (*all->line == '\0' && all->head))
 		check_line(all, all->line);
 	all->map = make_map(all);
-	while (all->map[i])
-	{
-		printf("%s\n", all->map[i]);
-		i++;
-	}
+
+//	while (all->map[i])
+//	{
+//		printf("%s\n", all->map[i]);
+//		i++;
+//	}
 }
 

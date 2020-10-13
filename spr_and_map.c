@@ -50,13 +50,12 @@ void 	find_plr(t_all *all)
 	int 	j;
 	int flag = 0;
 	i = 0;
-	all->plr_vis = "NSEW";
 	while (all->map[i])
 	{
 		j = 0;
 		while (all->map[i][j])
 		{
-			if (ft_strchr(all->plr_vis, all->map[i][j]))
+			if (ft_strchr("NSEW", all->map[i][j]))
 			{
 				all->plr.x = SCALE * j + (SCALE / 2);
 				all->plr.y = SCALE * i + (SCALE / 2);
