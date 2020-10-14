@@ -4,8 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/jheat/git_cub3D/check_file.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/check_file.c.o"
   "/Users/jheat/git_cub3D/colors.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/colors.c.o"
   "/Users/jheat/git_cub3D/draw.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/draw.c.o"
+  "/Users/jheat/git_cub3D/draw_sprite.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/draw_sprite.c.o"
   "/Users/jheat/git_cub3D/get_next_line/get_next_line.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
   "/Users/jheat/git_cub3D/get_next_line/get_next_line_utils.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
   "/Users/jheat/git_cub3D/libft/ft_atoi.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/libft/ft_atoi.c.o"
@@ -50,6 +52,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/git_cub3D/main.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/main.c.o"
   "/Users/jheat/git_cub3D/move.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/move.c.o"
   "/Users/jheat/git_cub3D/parcer.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/parcer.c.o"
+  "/Users/jheat/git_cub3D/raycasting.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/raycasting.c.o"
   "/Users/jheat/git_cub3D/spr_and_map.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/spr_and_map.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

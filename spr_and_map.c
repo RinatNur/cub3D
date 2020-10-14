@@ -44,41 +44,15 @@ void ft_spr_lstadd_back(t_spr_list **lst, t_spr_list *new)
 	}
 }
 
-void 	find_plr(t_all *all)
-{
-	int 	i;
-	int 	j;
-	int flag = 0;
-	i = 0;
-	while (all->map[i])
-	{
-		j = 0;
-		while (all->map[i][j])
-		{
-			if (ft_strchr("NSEW", all->map[i][j]))
-			{
-				all->plr.x = SCALE * j + (SCALE / 2);
-				all->plr.y = SCALE * i + (SCALE / 2);
-				all->plr.dir = ft_plr_vision(all->map[i][j]);
-				flag = 1;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (flag == 0)
-		exit_err("No player in map", 4);
-}
-
-void 		sort_spr(t_spr_list *ph)
+t_spr_list 		*sort_spr(t_spr_list **ph)
 {
 	t_spr_list *q, *out, *p, *pr;
 
 	out = NULL;
-	while (ph)
+	while (*ph)
 	{
-		q = ph;
-		ph = ph->next;
+		q = *ph;
+		*ph = (*ph)->next;
 		p = out;
 		pr = NULL;
 		while (p && q->len_from_plr < p->len_from_plr)
@@ -97,30 +71,18 @@ void 		sort_spr(t_spr_list *ph)
 			pr->next = q;
 		}
 	}
-	ph = out;
+	*ph = out;
+	return (*ph);
 }
 
-void 		find_spr(t_all *all)
+void 	get_spr_list(t_all *all, int i, int j)
 {
-	int 	i = 0;
-	int 	j;
-	int 	x, y, len;
+	int		x;
+	int 	y;
+	int 	len;
 
-	while (all->map[i])
-	{
-		j = 0;
-		while (all->map[i][j])
-		{
-			if (all->map[i][j] == '2')
-			{
-				x = SCALE * j + (SCALE / 2);
-				y = SCALE * i + (SCALE / 2);
-				len = (int)sqrt((pow(all->plr.x - x, 2) + (pow(all->plr.y - y, 2))));
-				ft_spr_lstadd_back(&all->spr_list, ft_spr_lstnew(x, y, len));
-			}
-			j++;
-		}
-		i++;
-	}
-	sort_spr(all->spr_list);
+	x = SCALE * j + (SCALE / 2);
+	y = SCALE * i + (SCALE / 2);
+//	len = (int)sqrt((pow(all->plr.x - x, 2) + (pow(all->plr.y - y, 2))));
+	ft_spr_lstadd_back(&all->spr_list, ft_spr_lstnew(x, y, 0));
 }

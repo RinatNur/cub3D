@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cub3D.dir/check_file.c.o"
   "CMakeFiles/cub3D.dir/colors.c.o"
   "CMakeFiles/cub3D.dir/draw.c.o"
+  "CMakeFiles/cub3D.dir/draw_sprite.c.o"
   "CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o"
   "CMakeFiles/cub3D.dir/get_next_line/get_next_line_utils.c.o"
   "CMakeFiles/cub3D.dir/libft/ft_atoi.c.o"
@@ -45,6 +47,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/main.c.o"
   "CMakeFiles/cub3D.dir/move.c.o"
   "CMakeFiles/cub3D.dir/parcer.c.o"
+  "CMakeFiles/cub3D.dir/raycasting.c.o"
   "CMakeFiles/cub3D.dir/spr_and_map.c.o"
   "cub3D"
   "cub3D.pdb"

@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -668,6 +668,45 @@ CMakeFiles/cub3D.dir/parcer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/parcer.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/git_cub3D/parcer.c -o CMakeFiles/cub3D.dir/parcer.c.s
 
+CMakeFiles/cub3D.dir/check_file.c.o: CMakeFiles/cub3D.dir/flags.make
+CMakeFiles/cub3D.dir/check_file.c.o: ../check_file.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/cub3D.dir/check_file.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/check_file.c.o   -c /Users/jheat/git_cub3D/check_file.c
+
+CMakeFiles/cub3D.dir/check_file.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/check_file.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/git_cub3D/check_file.c > CMakeFiles/cub3D.dir/check_file.c.i
+
+CMakeFiles/cub3D.dir/check_file.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/check_file.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/git_cub3D/check_file.c -o CMakeFiles/cub3D.dir/check_file.c.s
+
+CMakeFiles/cub3D.dir/draw_sprite.c.o: CMakeFiles/cub3D.dir/flags.make
+CMakeFiles/cub3D.dir/draw_sprite.c.o: ../draw_sprite.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/cub3D.dir/draw_sprite.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/draw_sprite.c.o   -c /Users/jheat/git_cub3D/draw_sprite.c
+
+CMakeFiles/cub3D.dir/draw_sprite.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/draw_sprite.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/git_cub3D/draw_sprite.c > CMakeFiles/cub3D.dir/draw_sprite.c.i
+
+CMakeFiles/cub3D.dir/draw_sprite.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/draw_sprite.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/git_cub3D/draw_sprite.c -o CMakeFiles/cub3D.dir/draw_sprite.c.s
+
+CMakeFiles/cub3D.dir/raycasting.c.o: CMakeFiles/cub3D.dir/flags.make
+CMakeFiles/cub3D.dir/raycasting.c.o: ../raycasting.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/cub3D.dir/raycasting.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cub3D.dir/raycasting.c.o   -c /Users/jheat/git_cub3D/raycasting.c
+
+CMakeFiles/cub3D.dir/raycasting.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cub3D.dir/raycasting.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jheat/git_cub3D/raycasting.c > CMakeFiles/cub3D.dir/raycasting.c.i
+
+CMakeFiles/cub3D.dir/raycasting.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cub3D.dir/raycasting.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jheat/git_cub3D/raycasting.c -o CMakeFiles/cub3D.dir/raycasting.c.s
+
 # Object files for target cub3D
 cub3D_OBJECTS = \
 "CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o" \
@@ -716,7 +755,10 @@ cub3D_OBJECTS = \
 "CMakeFiles/cub3D.dir/main.c.o" \
 "CMakeFiles/cub3D.dir/move.c.o" \
 "CMakeFiles/cub3D.dir/spr_and_map.c.o" \
-"CMakeFiles/cub3D.dir/parcer.c.o"
+"CMakeFiles/cub3D.dir/parcer.c.o" \
+"CMakeFiles/cub3D.dir/check_file.c.o" \
+"CMakeFiles/cub3D.dir/draw_sprite.c.o" \
+"CMakeFiles/cub3D.dir/raycasting.c.o"
 
 # External object files for target cub3D
 cub3D_EXTERNAL_OBJECTS =
@@ -768,9 +810,12 @@ cub3D: CMakeFiles/cub3D.dir/main.c.o
 cub3D: CMakeFiles/cub3D.dir/move.c.o
 cub3D: CMakeFiles/cub3D.dir/spr_and_map.c.o
 cub3D: CMakeFiles/cub3D.dir/parcer.c.o
+cub3D: CMakeFiles/cub3D.dir/check_file.c.o
+cub3D: CMakeFiles/cub3D.dir/draw_sprite.c.o
+cub3D: CMakeFiles/cub3D.dir/raycasting.c.o
 cub3D: CMakeFiles/cub3D.dir/build.make
 cub3D: CMakeFiles/cub3D.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Linking C executable cub3D"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Linking C executable cub3D"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cub3D.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

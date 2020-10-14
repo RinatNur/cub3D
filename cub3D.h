@@ -1,7 +1,6 @@
 #ifndef _CUB_3_D_
 # define _CUB_3_D_
 # include <stdio.h>
-//# include <mlx.h>
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -9,8 +8,6 @@
 # include "./get_next_line/get_next_line.h"
 # include "./minilibx_dynamic/mlx.h"
 
-//# define WIN_W 800
-//# define WIN_H 600
 # define FOV M_PI/3
 # define SCALE (double)64
 # define LEFT keycode == 0
@@ -94,13 +91,12 @@ typedef struct 	s_all
 
 	t_list		*head;
 	t_spr_list	*spr_list;
+	t_spr_list	*sprite_list_head;
 	t_wall		wall;
 	t_ray		ray;
 	t_win		win;
 	t_plr 		plr;
 	char 		**map;
-	char 		*plr_vis;
-	char 		*map_sym;
 	char 		*line;
 	//parcing
 	char 		*r_text;
@@ -126,9 +122,9 @@ typedef struct 	s_all
 	double		*mas_rays;
 }				t_all;
 
-void		init_textures(t_all *all);
+void		draw_img(t_all *all);
+void		exit_err(char *str, int code);
 void 		list_print (t_spr_list *list);
-void 		find_spr(t_all *all);
 //move.c
 int 		ft_move(int keycode, t_all *all);
 //colors.c
@@ -136,19 +132,23 @@ int 		get_trgb(int t, int r, int g, int b);
 void		my_mlx_pixel_put(t_all *all, t_data *data, int x, int y, int color);
 int         get_color(t_texture *texture, int x, int y);
 //draw.c
-void 		init_ray_begin(t_all *all);
 void 		ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb);
 void		draw_map(t_all *all);
-void		draw_img(t_all *all);
-void 		one_ray_casting(t_all *all);
+void 		draw_walls(t_all *all);
+//raycating
 void 		ray_casting(t_all *all);
 //parcer.c
-void		exit_err(char *str, int code);
-void 	ft_parcer(t_all *all);
+void 		ft_parcer(t_all *all);
+//char 		**make_map(t_all *all);
 //spr_and_map
 double		ft_plr_vision(char map_vision);
-char 		**make_map(t_all *all);
+void 		ft_spr_lstadd_back(t_spr_list **lst, t_spr_list *new);
+t_spr_list 		*sort_spr(t_spr_list **ph);
+void 		get_spr_list(t_all *all, int i, int j);
 t_spr_list		*ft_spr_lstnew(int x, int y, int len);
-void 		find_plr(t_all *all);
+//check_file
+void check_line(t_all *all, char *line);
+//draw_sprite
+void 	draw_spr(t_all *all, t_spr_list *sprite);
 
 #endif

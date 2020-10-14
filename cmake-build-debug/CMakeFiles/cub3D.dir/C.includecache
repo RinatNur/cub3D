@@ -40,9 +40,9 @@ unistd.h
 stdio.h
 -
 
-/Users/jheat/git_cub3D/minilibx_dynamic/mlx.h
-
-/Users/jheat/git_cub3D/parcer.c
+/Users/jheat/git_cub3D/main.c
 cub3D.h
 /Users/jheat/git_cub3D/cub3D.h
+
+/Users/jheat/git_cub3D/minilibx_dynamic/mlx.h
 

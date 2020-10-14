@@ -1,4 +1,4 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jheat/git_cub3D
+/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/jheat/git_cub3D
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/jheat/git_cub3D/cmake-build-debug

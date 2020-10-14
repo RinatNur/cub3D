@@ -86,6 +86,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/jheat/git_cub3D/check_file.c">
+			<Option target="cub3D"/>
+		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/colors.c">
 			<Option target="cub3D"/>
 		</Unit>
@@ -93,6 +96,9 @@
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/draw.c">
+			<Option target="cub3D"/>
+		</Unit>
+		<Unit filename="/Users/jheat/git_cub3D/draw_sprite.c">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/get_next_line/get_next_line.c">
@@ -231,6 +237,9 @@
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/parcer.c">
+			<Option target="cub3D"/>
+		</Unit>
+		<Unit filename="/Users/jheat/git_cub3D/raycasting.c">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/spr_and_map.c">

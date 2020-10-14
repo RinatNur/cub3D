@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jheat/git_cub3D/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/84B44591-3109-4CCA-A22A-5974AE15086F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/794E11CD-2E30-4596-8A22-5CD09A67ECEF/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,33 @@ cub3D: cmake_check_build_system
 cub3D/fast:
 	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/build
 .PHONY : cub3D/fast
+
+check_file.o: check_file.c.o
+
+.PHONY : check_file.o
+
+# target to build an object file
+check_file.c.o:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file.c.o
+.PHONY : check_file.c.o
+
+check_file.i: check_file.c.i
+
+.PHONY : check_file.i
+
+# target to preprocess a source file
+check_file.c.i:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file.c.i
+.PHONY : check_file.c.i
+
+check_file.s: check_file.c.s
+
+.PHONY : check_file.s
+
+# target to generate assembly for a file
+check_file.c.s:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file.c.s
+.PHONY : check_file.c.s
 
 colors.o: colors.c.o
 
@@ -176,6 +203,33 @@ draw.s: draw.c.s
 draw.c.s:
 	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/draw.c.s
 .PHONY : draw.c.s
+
+draw_sprite.o: draw_sprite.c.o
+
+.PHONY : draw_sprite.o
+
+# target to build an object file
+draw_sprite.c.o:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/draw_sprite.c.o
+.PHONY : draw_sprite.c.o
+
+draw_sprite.i: draw_sprite.c.i
+
+.PHONY : draw_sprite.i
+
+# target to preprocess a source file
+draw_sprite.c.i:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/draw_sprite.c.i
+.PHONY : draw_sprite.c.i
+
+draw_sprite.s: draw_sprite.c.s
+
+.PHONY : draw_sprite.s
+
+# target to generate assembly for a file
+draw_sprite.c.s:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/draw_sprite.c.s
+.PHONY : draw_sprite.c.s
 
 get_next_line/get_next_line.o: get_next_line/get_next_line.c.o
 
@@ -1365,6 +1419,33 @@ parcer.c.s:
 	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/parcer.c.s
 .PHONY : parcer.c.s
 
+raycasting.o: raycasting.c.o
+
+.PHONY : raycasting.o
+
+# target to build an object file
+raycasting.c.o:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/raycasting.c.o
+.PHONY : raycasting.c.o
+
+raycasting.i: raycasting.c.i
+
+.PHONY : raycasting.i
+
+# target to preprocess a source file
+raycasting.c.i:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/raycasting.c.i
+.PHONY : raycasting.c.i
+
+raycasting.s: raycasting.c.s
+
+.PHONY : raycasting.s
+
+# target to generate assembly for a file
+raycasting.c.s:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/raycasting.c.s
+.PHONY : raycasting.c.s
+
 spr_and_map.o: spr_and_map.c.o
 
 .PHONY : spr_and_map.o
@@ -1401,12 +1482,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cub3D"
+	@echo "... check_file.o"
+	@echo "... check_file.i"
+	@echo "... check_file.s"
 	@echo "... colors.o"
 	@echo "... colors.i"
 	@echo "... colors.s"
 	@echo "... draw.o"
 	@echo "... draw.i"
 	@echo "... draw.s"
+	@echo "... draw_sprite.o"
+	@echo "... draw_sprite.i"
+	@echo "... draw_sprite.s"
 	@echo "... get_next_line/get_next_line.o"
 	@echo "... get_next_line/get_next_line.i"
 	@echo "... get_next_line/get_next_line.s"
@@ -1539,6 +1626,9 @@ help:
 	@echo "... parcer.o"
 	@echo "... parcer.i"
 	@echo "... parcer.s"
+	@echo "... raycasting.o"
+	@echo "... raycasting.i"
+	@echo "... raycasting.s"
 	@echo "... spr_and_map.o"
 	@echo "... spr_and_map.i"
 	@echo "... spr_and_map.s"
