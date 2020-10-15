@@ -79,19 +79,39 @@ void		draw_img(t_all *all)
 	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win, all->win.img.img, 0, 0);
 }
 
+static void 	check_argc(t_all *all, int argc, char **argv)
+{
+	int 	len;
+
+	len = ft_strlen(argv[1]);
+	if (argc == 3)
+		if (ft_strlen(argv[2]) != 6 || ft_strncmp(argv[2], "--save", 6))
+			exit_err("Not valid input data", 2);
+	if (argc == 2)
+		if (len < 5 || ft_strncmp(&argv[1][len - 4], ".cub", 4))
+			exit_err("Not valid name of map file", 2);
+
+}
+
 int				main(int argc, char **argv)
 {
 	t_all		all;
+	int			fd;
 
+	(argc < 2 || argc > 3) ? exit_err("Not valid input data", 2)
+	: check_argc(&all, argc, argv);
 	all.count = 0;
-	ft_parcer(&all);
+	fd = open (argv[1], O_RDONLY);
+	ft_parcer(&all, fd);
 	all.win.mlx = mlx_init();
 	all.win.mlx_win = mlx_new_window(all.win.mlx, all.win_w, all.win_h, "cub 3D!");
-	all.win.img.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h);
+	!(all.win.img.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h)) ? exit_err("No image", 2) : 0;
 	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.bits_per_pixel, &all.win.img.line_length,
 										  &all.win.img.endian);
 	init_textures(&all);
 	draw_img(&all);
+//	if (argc == 3)
+//		make_screenshot(&all);
 	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win, all.win.img.img, 0, 0);
 	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
 	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);

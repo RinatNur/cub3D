@@ -54,18 +54,22 @@ void 	check_and_print_texture(t_all *all)
 {
 	if (all->wall.start >= 0 && all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x - 0.25 * cos(all->ray.dir)) / (int)SCALE] == '1')
 		if(all->map[(int)(all->ray.y + 32) / (int)SCALE][(int)all->ray.x / (int)(SCALE)] == '1')
-			print_texture(all, all->ray.x, &all->texture_EA);
+			print_texture(all, all->ray.x, &all->texture_NO);
 		else
-			print_texture(all, all->ray.x, &all->texture_WE);
+			print_texture(all, all->ray.x, &all->texture_SO);
 	else if (all->wall.start >= 0)
 	{
 		if(all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x + 32) / (int)(SCALE)] == '1')
-			print_texture(all, all->ray.y, &all->texture_NO);
+			print_texture(all, all->ray.y, &all->texture_EA);
 		else
-			print_texture(all, all->ray.y, &all->texture_SO);
+			print_texture(all, all->ray.y, &all->texture_WE);
 	}
-//	else
-//		print_texture(all, all->ray.y, &all->texture_EA);
+	else
+	{
+//		printf("%i\n", all->count++);
+		print_texture(all, all->ray.y, &all->texture_EA);
+
+	}
 }
 
 void 	draw_walls(t_all *all)

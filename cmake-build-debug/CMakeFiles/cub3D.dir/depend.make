@@ -172,6 +172,12 @@ CMakeFiles/cub3D.dir/raycasting.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/raycasting.c.o: ../minilibx_dynamic/mlx.h
 CMakeFiles/cub3D.dir/raycasting.c.o: ../raycasting.c
 
+CMakeFiles/cub3D.dir/screenshot.c.o: ../cub3D.h
+CMakeFiles/cub3D.dir/screenshot.c.o: ../get_next_line/get_next_line.h
+CMakeFiles/cub3D.dir/screenshot.c.o: ../libft/libft.h
+CMakeFiles/cub3D.dir/screenshot.c.o: ../minilibx_dynamic/mlx.h
+CMakeFiles/cub3D.dir/screenshot.c.o: ../screenshot.c
+
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../cub3D.h
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../libft/libft.h

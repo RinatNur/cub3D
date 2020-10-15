@@ -122,33 +122,35 @@ typedef struct 	s_all
 	double		*mas_rays;
 }				t_all;
 
-void		draw_img(t_all *all);
-void		exit_err(char *str, int code);
-void 		list_print (t_spr_list *list);
+void			draw_img(t_all *all);
+void			exit_err(char *str, int code);
+void 			list_print (t_spr_list *list);
 //move.c
-int 		ft_move(int keycode, t_all *all);
+int 			ft_move(int keycode, t_all *all);
 //colors.c
-int 		get_trgb(int t, int r, int g, int b);
-void		my_mlx_pixel_put(t_all *all, t_data *data, int x, int y, int color);
-int         get_color(t_texture *texture, int x, int y);
+int 			get_trgb(int t, int r, int g, int b);
+void			my_mlx_pixel_put(t_all *all, t_data *data, int x, int y, int color);
+int         	get_color(t_texture *texture, int x, int y);
 //draw.c
-void 		ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb);
-void		draw_map(t_all *all);
-void 		draw_walls(t_all *all);
+void 			ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb);
+void			draw_map(t_all *all);
+void 			draw_walls(t_all *all);
 //raycating
-void 		ray_casting(t_all *all);
+void 			ray_casting(t_all *all);
 //parcer.c
-void 		ft_parcer(t_all *all);
+void	 		ft_parcer(t_all *all, int fd);
 //char 		**make_map(t_all *all);
 //spr_and_map
-double		ft_plr_vision(char map_vision);
-void 		ft_spr_lstadd_back(t_spr_list **lst, t_spr_list *new);
-t_spr_list 		*sort_spr(t_spr_list **ph);
-void 		get_spr_list(t_all *all, int i, int j);
+double			ft_plr_vision(char map_vision);
+void 			ft_spr_lstadd_back(t_spr_list **lst, t_spr_list *new);
+t_spr_list		*sort_spr(t_spr_list **ph);
+void 			get_spr_list(t_all *all, int i, int j);
 t_spr_list		*ft_spr_lstnew(int x, int y, int len);
 //check_file
-void check_line(t_all *all, char *line);
+void			check_line(t_all *all, char *line);
 //draw_sprite
-void 	draw_spr(t_all *all, t_spr_list *sprite);
+void			draw_spr(t_all *all, t_spr_list *sprite);
+//screenshot.c
+void			make_screenshot(t_all *all);
 
 #endif

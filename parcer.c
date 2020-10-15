@@ -101,12 +101,12 @@ static void 	check_map_data(t_all *all)
 //	}
 }
 
-void 	ft_parcer(t_all *all)
+void 	ft_parcer(t_all *all, int fd)
 {
 	init_parcer(all);
-	int 	fd;
+//	int 	fd;
 
-	fd = open ("../map.cub", O_RDONLY);
+//	fd = open (argv[1], O_RDONLY);
 	while ((get_next_line(fd, &all->line)) > 0)
 	{
 		if (*all->line != '\0')// || (*all->line == '\0' && all->head))
