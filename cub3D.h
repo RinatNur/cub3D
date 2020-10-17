@@ -125,6 +125,8 @@ typedef struct 	s_all
 
 void			draw_img(t_all *all);
 void			exit_err(char *str, int code);
+//void 			ft_free(t_all *all);
+void 			ft_malloc_err(t_all *all, void *cont);
 void 			list_print (t_spr_list *list);
 //move.c
 int 			ft_move(int keycode, t_all *all);

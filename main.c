@@ -99,6 +99,12 @@ static void 	check_argc(t_all *all, int argc, char **argv)
 //	free(all->mas_rays);
 //}
 
+void 			ft_malloc_err(t_all *all, void *cont)
+{
+	free(cont);
+	exit_err("Malloc problem", 100);
+}
+
 int				main(int argc, char **argv)
 {
 	t_all		all;

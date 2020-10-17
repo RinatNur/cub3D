@@ -40,6 +40,12 @@ static void 	get_scr_size(t_all *all, char *line)
 	line = ft_strtrim(line, " ");
 	is_R_or_F_or_C_valid(all, line, ' ', 2, "Not valid screen size");
 	size = ft_split(line, ' ');
+	free(line);
+	if (NULL == size)
+	{
+		free(size);
+		exit_err("Malloc: memory is not allocated", 33);
+	}
 	while (size[i])
 	{
 		while(size[i][j])
@@ -55,25 +61,38 @@ static void 	get_scr_size(t_all *all, char *line)
 
 	all->win_w = (all->win_w > all->scr_size_x) ? all->scr_size_x : all->win_w;
 	all->win_h = (all->win_h > all->scr_size_y) ? all->scr_size_y : all->win_h;
+	free(size);
 }
 
-static int		get_F_and_C_col(t_all *all, char *line)
+static int		get_F_and_C_col(t_all *all, char *s)
 {
 	char **rgb;
 	int r, g, b, t = 0;
+	char 	*line;
 
+	line = s;
 	is_R_or_F_or_C_valid(all, line, ',', 3, "Not valid Floor Or Ceil color");
 	rgb = ft_split(line, ',');
+	if (NULL == rgb)
+	{
+		free(rgb);
+		exit_err("Malloc: memory is not allocated", 33);
+	}
+	free(rgb);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
 		exit_err("Not valid Floor Or Ceil color", 2);
+	free(line);
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void check_line(t_all *all, char *line)
+void check_line(t_all *all, char *s)
 {
+	char  *line;
+
+	line = s;
 	while (*line == ' ')
 		line++;
 	if (*line == 'R' && *(line + 1) == ' ' && all->win_h == -1 && all->win_w == -1 )
@@ -93,7 +112,13 @@ void check_line(t_all *all, char *line)
 	else if (*line == 'C' && *(line + 1) == ' ' && all->ceiling_col == -1)
 		all->ceiling_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
 	else if (is_ident_true(all) && !(*line == 'C' && *(line + 1) == ' '))
+	{
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
+	}
 	else
 		exit_err("File is not valid", 12);
+	if (*s == 'R' || (*s == 'N' && *(s + 1) == 'O') || (*s == 'S' && *(s + 1) == 'O')
+	|| (*s == 'W' && *(s + 1) == 'E') || (*s == 'E' && *(s + 1) == 'A')
+	|| *s == 'S' || *s == 'F' || *s == 'C')
+		free(line);
 }

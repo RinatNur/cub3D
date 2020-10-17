@@ -113,16 +113,21 @@ static void 	check_map_data(t_all *all)
 void 	ft_parcer(t_all *all, int fd)
 {
 	init_parcer(all);
-//	int 	fd;
 
-//	fd = open (argv[1], O_RDONLY);
 	while ((get_next_line(fd, &all->line)) > 0)
 	{
 		if (*all->line != '\0')// || (*all->line == '\0' && all->head))
+		{
 			check_line(all, all->line);
+		}
+		if (*all->line == '\0')
+			free(all->line);
 	}
 	if (*all->line != '\0')// || (*all->line == '\0' && all->head))
 		check_line(all, all->line);
+	if (*all->line == '\0')
+		free(all->line);
+//	free(all->line);
 	all->map = make_map(all);
 	check_map_data(all);
 //	sort_spr(all->spr_list);
