@@ -1,4 +1,4 @@
-R     800 600
+  R     800 600
 EA ./textures/greystone.xpm
 
    NO        ./textures/redbrick.xpm

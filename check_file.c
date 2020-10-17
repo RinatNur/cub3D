@@ -75,7 +75,7 @@ static int		get_F_and_C_col(t_all *all, char *line)
 void check_line(t_all *all, char *line)
 {
 	while (*line == ' ')
-		*(line++);
+		line++;
 	if (*line == 'R' && *(line + 1) == ' ' && all->win_h == -1 && all->win_w == -1 )
 		get_scr_size(all, line + 1);
 	else if (*line == 'N' && *(line + 1) == 'O' && !all->no_text)
