@@ -8,6 +8,15 @@ static int 	is_ident_true(t_all *all)
 	return(0);
 }
 
+void 	ft_free_mas(char **mas)
+{
+	int  i = 0;
+
+	while (mas[++i])
+		free(mas[i]);
+	free(mas);
+}
+
 static void 	is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err)
 {
 	int i = 0;
@@ -36,8 +45,10 @@ static void 	get_scr_size(t_all *all, char *line)
 {
 	char 	**size;
 	int 	i = 0, j = 0;
+	char *tmp = line;
 
 	line = ft_strtrim(line, " ");
+//	free(tmp);
 	is_R_or_F_or_C_valid(all, line, ' ', 2, "Not valid screen size");
 	size = ft_split(line, ' ');
 	free(line);
@@ -61,6 +72,8 @@ static void 	get_scr_size(t_all *all, char *line)
 
 	all->win_w = (all->win_w > all->scr_size_x) ? all->scr_size_x : all->win_w;
 	all->win_h = (all->win_h > all->scr_size_y) ? all->scr_size_y : all->win_h;
+	free(size[0]);
+	free(size[1]);
 	free(size);
 }
 
@@ -68,6 +81,7 @@ static int		get_F_and_C_col(t_all *all, char *s)
 {
 	char **rgb;
 	int r, g, b, t = 0;
+	int i = -1;
 	char 	*line;
 
 	line = s;
@@ -78,10 +92,13 @@ static int		get_F_and_C_col(t_all *all, char *s)
 		free(rgb);
 		exit_err("Malloc: memory is not allocated", 33);
 	}
-	free(rgb);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
+	while (rgb[++i])
+		free(rgb[i]);
+	free(rgb);
+//	ft_free_mas(rgb); не работает исправь
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
 		exit_err("Not valid Floor Or Ceil color", 2);
 	free(line);
