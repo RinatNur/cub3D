@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
-# include "./minilibx_dynamic/mlx.h"
+# include "./mlx_dylib/mlx.h"
 
 # define FOV M_PI/3
 # define SCALE (double)64

@@ -63,7 +63,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../."
   "../get_next_line"
   "../libft"
-  "../minilibx_dynamic"
+  "../mlx_dylib"
   )
 
 # Targets to which this target links.

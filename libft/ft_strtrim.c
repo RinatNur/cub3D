@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/25 08:51:56 by jheat             #+#    #+#             */
-/*   Updated: 2020/05/25 11:24:54 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/17 16:59:50 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	char		*str;
 	int			i;
 	size_t		finish;
-	int			start;
+	size_t			start;
 
 	i = 0;
 	start = 0;

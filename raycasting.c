@@ -35,7 +35,7 @@ static void 	one_ray_casting(t_all *all)
 		all->ray.len += 0.25;
 		all->ray.x = all->plr.x + all->ray.len * cos(all->ray.dir);
 		all->ray.y = all->plr.y + all->ray.len * sin(all->ray.dir);
-		my_mlx_pixel_put(all, &all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
+//		my_mlx_pixel_put(all, &all->win.img, (int)all->ray.x/6, (int)all->ray.y/6, get_trgb(0, 85, 21, 78));
 	}
 }
 
@@ -57,7 +57,7 @@ void 			ray_casting(t_all *all)
 		draw_walls(all);
 		init_ray_cicle(all);
 	}
-	init_ray_begin(all);
+//	init_ray_begin(all);
 //	while (all->ray.dir < all->ray.end)
 //	{
 //		while (all->ray.len < all->mas_rays[i])

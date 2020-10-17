@@ -76,7 +76,7 @@ void		draw_img(t_all *all)
 		draw_spr(all, all->spr_list);
 		all->spr_list = all->spr_list->next;
 	}
-	draw_map(all);
+//	draw_map(all);
 	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win, all->win.img.img, 0, 0);
 }
 
@@ -116,11 +116,10 @@ int				main(int argc, char **argv)
 										  &all.win.img.endian);
 	init_textures(&all);
 	draw_img(&all);
-	if (argc == 3)
-		make_screenshot(&all);
 	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win, all.win.img.img, 0, 0);
 	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
 	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);
+	if (argc == 3)
+		make_screenshot(&all);
 	mlx_loop(all.win.mlx);
-//	malloc();
 }
