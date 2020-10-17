@@ -43,7 +43,11 @@ void 			ray_casting(t_all *all)
 {
 	int			i = 0;
 	double		j =0;
-	all->mas_rays = (double *)malloc(sizeof(double) * all->win_w + 1);
+//	if(!(all->mas_rays = (double *)malloc(sizeof(double) * all->win_w + 1)))
+//	{
+//		free(all->mas_rays);
+//		exit_err("Malloc error", 2);
+//	}
 	init_ray_begin(all);
 	while (all->ray.dir < all->ray.end)
 	{

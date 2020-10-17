@@ -8,7 +8,7 @@ static void 	spr_struct_init(t_all *all, t_spr_list *sprite)
 		sprite->spr_dir -= 2 * M_PI;
 	while (sprite->spr_dir - all->plr.dir < -M_PI)
 		sprite->spr_dir += 2 * M_PI;
-	sprite->spr_scr_size = all->win_h * 64 / sprite->len_from_plr;
+	sprite->spr_scr_size = all->win_h * SCALE / sprite->len_from_plr;
 	sprite->h_offset = (sprite->spr_dir - all->plr.dir) * all->win_w
 					   / (M_PI / 3) + all->win_w / 2 - sprite->spr_scr_size / 2;
 	sprite->v_offset = all->win_h / 2 - sprite->spr_scr_size / 2;

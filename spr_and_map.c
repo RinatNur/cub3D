@@ -83,6 +83,5 @@ void 	get_spr_list(t_all *all, int i, int j)
 
 	x = SCALE * j + (SCALE / 2);
 	y = SCALE * i + (SCALE / 2);
-//	len = (int)sqrt((pow(all->plr.x - x, 2) + (pow(all->plr.y - y, 2))));
 	ft_spr_lstadd_back(&all->spr_list, ft_spr_lstnew(x, y, 0));
 }

@@ -51,6 +51,7 @@ void			exit_err(char *str, int code)
 	write(2, "Error\n", 6);
 	write (2, str, ft_strlen(str));
 	write (2, "\n", 1);
+//	ft_free(all);
 	exit (code);
 }
 
@@ -93,6 +94,11 @@ static void 	check_argc(t_all *all, int argc, char **argv)
 
 }
 
+//void 			ft_free(t_all *all)
+//{
+//	free(all->mas_rays);
+//}
+
 int				main(int argc, char **argv)
 {
 	t_all		all;
@@ -101,7 +107,7 @@ int				main(int argc, char **argv)
 	(argc < 2 || argc > 3) ? exit_err("Not valid input data", 2)
 	: check_argc(&all, argc, argv);
 	all.count = 0;
-	fd = open (argv[1], O_RDONLY);
+	(fd = open (argv[1], O_RDONLY)) == -1 ? exit_err("The file can't be opened", 2) : 0;
 	ft_parcer(&all, fd);
 	all.win.mlx = mlx_init();
 	all.win.mlx_win = mlx_new_window(all.win.mlx, all.win_w, all.win_h, "cub 3D!");
@@ -110,10 +116,11 @@ int				main(int argc, char **argv)
 										  &all.win.img.endian);
 	init_textures(&all);
 	draw_img(&all);
-//	if (argc == 3)
-//		make_screenshot(&all);
+	if (argc == 3)
+		make_screenshot(&all);
 	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win, all.win.img.img, 0, 0);
 	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
 	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);
 	mlx_loop(all.win.mlx);
+//	malloc();
 }

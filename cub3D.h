@@ -22,6 +22,7 @@ typedef struct		s_plr {
 	double 		x;
 	double 		y;
 	double 		dir;
+	int 		flag;
 }				t_plr;
 
 typedef struct		s_ray {
