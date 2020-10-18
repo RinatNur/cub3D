@@ -13,14 +13,14 @@
 NAME = cub3D
 
 SRC = check_file.c colors.c draw.c draw_sprite.c main.c move.c parcer.c \
-        raycasting.c screenshot.c spr_and_map.c \
+        raycasting.c screenshot.c spr_and_map.c check_file_utils.c\
         get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
-HEADER = cub3D.h
+HEADER = cub.h
 
-FLAGS =
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 

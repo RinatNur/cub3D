@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 static void 	create_bmp_header(t_all *all, int size, int fd)
 {

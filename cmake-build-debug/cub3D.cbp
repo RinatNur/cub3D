@@ -89,10 +89,13 @@
 		<Unit filename="/Users/jheat/git_cub3D/check_file.c">
 			<Option target="cub3D"/>
 		</Unit>
+		<Unit filename="/Users/jheat/git_cub3D/check_file_utils.c">
+			<Option target="cub3D"/>
+		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/colors.c">
 			<Option target="cub3D"/>
 		</Unit>
-		<Unit filename="/Users/jheat/git_cub3D/cub3D.h">
+		<Unit filename="/Users/jheat/git_cub3D/cub.h">
 			<Option target="cub3D"/>
 		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/draw.c">

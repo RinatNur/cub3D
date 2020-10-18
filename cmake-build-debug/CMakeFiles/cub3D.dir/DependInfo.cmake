@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/jheat/git_cub3D/check_file.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/check_file.c.o"
+  "/Users/jheat/git_cub3D/check_file_utils.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/check_file_utils.c.o"
   "/Users/jheat/git_cub3D/colors.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/colors.c.o"
   "/Users/jheat/git_cub3D/draw.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/draw.c.o"
   "/Users/jheat/git_cub3D/draw_sprite.c" "/Users/jheat/git_cub3D/cmake-build-debug/CMakeFiles/cub3D.dir/draw_sprite.c.o"

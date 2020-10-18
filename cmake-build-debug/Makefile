@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CC896E02-F916-4FD9-B3F4-3F2DB13237E4/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CB3EBE1A-ED9C-491E-971C-864A8F5635BA/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CC896E02-F916-4FD9-B3F4-3F2DB13237E4/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
+RM = /private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CB3EBE1A-ED9C-491E-971C-864A8F5635BA/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/jheat/git_cub3D/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CC896E02-F916-4FD9-B3F4-3F2DB13237E4/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CB3EBE1A-ED9C-491E-971C-864A8F5635BA/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CC896E02-F916-4FD9-B3F4-3F2DB13237E4/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/private/var/folders/zz/zyxvpxvq6csfxvn_n0001dvw000bfz/T/AppTranslocation/CB3EBE1A-ED9C-491E-971C-864A8F5635BA/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -149,6 +149,33 @@ check_file.s: check_file.c.s
 check_file.c.s:
 	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file.c.s
 .PHONY : check_file.c.s
+
+check_file_utils.o: check_file_utils.c.o
+
+.PHONY : check_file_utils.o
+
+# target to build an object file
+check_file_utils.c.o:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file_utils.c.o
+.PHONY : check_file_utils.c.o
+
+check_file_utils.i: check_file_utils.c.i
+
+.PHONY : check_file_utils.i
+
+# target to preprocess a source file
+check_file_utils.c.i:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file_utils.c.i
+.PHONY : check_file_utils.c.i
+
+check_file_utils.s: check_file_utils.c.s
+
+.PHONY : check_file_utils.s
+
+# target to generate assembly for a file
+check_file_utils.c.s:
+	$(MAKE) -f CMakeFiles/cub3D.dir/build.make CMakeFiles/cub3D.dir/check_file_utils.c.s
+.PHONY : check_file_utils.c.s
 
 colors.o: colors.c.o
 
@@ -1512,6 +1539,9 @@ help:
 	@echo "... check_file.o"
 	@echo "... check_file.i"
 	@echo "... check_file.s"
+	@echo "... check_file_utils.o"
+	@echo "... check_file_utils.i"
+	@echo "... check_file_utils.s"
 	@echo "... colors.o"
 	@echo "... colors.i"
 	@echo "... colors.s"

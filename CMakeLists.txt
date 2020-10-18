@@ -56,7 +56,7 @@ add_executable(cub3D
         libft/libft.h
         colors.c
         draw.c
-        cub3D.h
+        cub.h
         main.c
         move.c
-        spr_and_map.c parcer.c check_file.c draw_sprite.c raycasting.c screenshot.c)
+        spr_and_map.c parcer.c check_file.c draw_sprite.c raycasting.c screenshot.c check_file_utils.c)

@@ -6,33 +6,26 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:37:05 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 17:04:08 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/18 17:56:53 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 static int		is_ident_true(t_all *all)
 {
-	if (all->no_text && all->so_text && all->we_text && all->ea_text && all->s_text
-		&& all->floor_col >= 0 && all->ceiling_col >= 0 && all->win_h >= 0 && all->win_w >= 0)
-		return(1);
-	return(0);
+	if (all->no_t && all->so_t && all->we_t && all->ea_t && all->s_t
+		&& all->floor_col >= 0 && all->ceiling_col >= 0 && all->win_h >= 0
+		&& all->win_w >= 0)
+		return (1);
+	return (0);
 }
 
-void			ft_free_mas(char **mas)
+static void		is_r_f_c_valid(char *s, char c, int j, char *err)
 {
-	int  i = -1;
+	int		i;
 
-	while (mas[++i])
-		free(mas[i]);
-	free(mas);
-}
-
-static void		is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err)
-{
-	int i = 0;
-
+	i = 0;
 	while (j > 0)
 	{
 		if ('0' <= s[i] && s[i] <= '9')
@@ -45,7 +38,7 @@ static void		is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err
 		else if (j != 1)
 			exit_err(err, 2);
 		if (c == ' ')
-			while(s[i] == ' ')
+			while (s[i] == ' ')
 				i++;
 		j--;
 	}
@@ -53,22 +46,22 @@ static void		is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err
 		exit_err(err, 2);
 }
 
-static void 	get_scr_size(t_all *all, char *line)
+static void		get_scr_size(t_all *all, char *line)
 {
-	char 	**size;
-	int 	i;
-	int 	j;
+	char		**size;
+	int			i;
+	int			j;
 
 	j = 0;
 	line = ft_strtrim(line, " ");
-	is_R_or_F_or_C_valid(all, line, ' ', 2, "Not valid screen size");
+	is_r_f_c_valid(line, ' ', 2, "Not valid screen size");
 	size = ft_split(line, ' ');
 	free(line);
 	if (!(i = 0) && NULL == size)
 		exit_err("Malloc: memory is not allocated", 33);
 	while (size[i])
 	{
-		while(size[i][j])
+		while (size[i][j])
 			j++;
 		if (j > 11)
 			exit_err("Not valid screen size", 2);
@@ -82,16 +75,16 @@ static void 	get_scr_size(t_all *all, char *line)
 	ft_free_mas(size);
 }
 
-static int		get_F_and_C_col(t_all *all, char *s)
+static int		get_f_and_c_col(t_all *all, char *s)
 {
-	char	**rgb;
-	char 	*line;
-	int		r;
-	int		g;
-	int		b;
+	char		**rgb;
+	char		*line;
+	int			r;
+	int			g;
+	int			b;
 
 	line = s;
-	is_R_or_F_or_C_valid(all, line, ',', 3, "Not valid Floor Or Ceil color");
+	is_r_f_c_valid(line, ',', 3, "Not valid Floor Or Ceil color");
 	rgb = ft_split(line, ',');
 	if (NULL == rgb)
 	{
@@ -108,35 +101,32 @@ static int		get_F_and_C_col(t_all *all, char *s)
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
-void 			check_line(t_all *all, char *s)
-{
-	char  *line;
 
-	line = s;
-	while (*line == ' ')
-		line++;
-	if (*line == 'R' && *(line + 1) == ' ' && all->win_h == -1 && all->win_w == -1 )
-		get_scr_size(all, line + 1);
-	else if (*line == 'N' && *(line + 1) == 'O' && !all->no_text)
-		all->no_text = ft_strtrim(line + 2, " ");
-	else if (*line == 'S' && *(line + 1) == 'O' && !all->so_text)
-		all->so_text = ft_strtrim(line + 2, " ");
-	else if (*line == 'W' && *(line + 1) == 'E' && !all->we_text)
-		all->we_text = ft_strtrim(line + 2, " ");
-	else if (*line == 'E' && *(line + 1) == 'A' && !all->ea_text)
-		all->ea_text = ft_strtrim(line + 2, " ");
-	else if (*line == 'S' && *(line + 1) == ' ' && !all->s_text)
-		all->s_text = ft_strtrim(line + 1, " ");
-	else if (*line == 'F' && *(line + 1) == ' ' && all->floor_col == -1)
-		all->floor_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
-	else if (*line == 'C' && *(line + 1) == ' ' && all->ceiling_col == -1)
-		all->ceiling_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
-	else if (is_ident_true(all) && !(*line == 'C' && *(line + 1) == ' '))
+
+void			check_line(t_all *all, char *s)
+{
+	char		*li;
+
+	li = skip_space(s);
+	if (*li == 'R' && *(li + 1) == ' ' && all->win_h == -1 && all->win_w == -1)
+		get_scr_size(all, li + 1);
+	else if (*li == 'N' && *(li + 1) == 'O' && !all->no_t)
+		all->no_t = ft_strtrim(li + 2, " ");
+	else if (*li == 'S' && *(li + 1) == 'O' && !all->so_t)
+		all->so_t = ft_strtrim(li + 2, " ");
+	else if (*li == 'W' && *(li + 1) == 'E' && !all->we_t)
+		all->we_t = ft_strtrim(li + 2, " ");
+	else if (*li == 'E' && *(li + 1) == 'A' && !all->ea_t)
+		all->ea_t = ft_strtrim(li + 2, " ");
+	else if (*li == 'S' && *(li + 1) == ' ' && !all->s_t)
+		all->s_t = ft_strtrim(li + 1, " ");
+	else if (*li == 'F' && *(li + 1) == ' ' && all->floor_col == -1)
+		all->floor_col = get_f_and_c_col(all, ft_strtrim(li + 1, " "));
+	else if (*li == 'C' && *(li + 1) == ' ' && all->ceiling_col == -1)
+		all->ceiling_col = get_f_and_c_col(all, ft_strtrim(li + 1, " "));
+	else if (is_ident_true(all) && !(*li == 'C' && *(li + 1) == ' '))
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
 	else
 		exit_err("File is not valid", 12);
-	if (*s == 'R' || (*s == 'N' && *(s + 1) == 'O') || (*s == 'S' && *(s + 1) == 'O')
-	|| (*s == 'W' && *(s + 1) == 'E') || (*s == 'E' && *(s + 1) == 'A')
-	|| *s == 'S' || *s == 'F' || *s == 'C')
-		free(line);
+	free_is_valid(s, li);
 }

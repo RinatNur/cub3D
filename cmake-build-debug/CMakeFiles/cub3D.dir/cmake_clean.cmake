@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/check_file.c.o"
+  "CMakeFiles/cub3D.dir/check_file_utils.c.o"
   "CMakeFiles/cub3D.dir/colors.c.o"
   "CMakeFiles/cub3D.dir/draw.c.o"
   "CMakeFiles/cub3D.dir/draw_sprite.c.o"

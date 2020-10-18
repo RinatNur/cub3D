@@ -4,7 +4,7 @@ R 800 600
 EA ./textures/greystone.xpm
 NO ./textures/redbrick.xpm
 SO ./textures/wood.xpm
-WE ./textures/mo ssy.xpm
+WE ./textures/mossy.xpm
 S ./textures/sprite.xpm
 F 45,50,55
 C 60,65,75
