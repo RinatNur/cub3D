@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 17:00:21 by jheat             #+#    #+#             */
+/*   Updated: 2020/10/18 17:00:21 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void 	ft_draw_square(t_all *all, int i, int j, double rec_per, int trgb)
@@ -45,16 +57,16 @@ void	draw_map(t_all *all)
 void 	print_texture(t_all *all, double coordinate, t_texture *texture_type)
 {
 	all->y_wall = (int)((all->wall.start - all->y_tmp) * texture_type->height / (all->wall.end - all->y_tmp));
-	all->x_wall = (int)coordinate % all->texture_NO.width;
+	all->x_wall = (int)(coordinate * (texture_type->width / SCALE)) % texture_type->width;
 	my_mlx_pixel_put(all, &all->win.img, (int)all->x, all->wall.start,
 					 get_color(texture_type, (int)all->x_wall, (int)all->y_wall));
 }
 
 void 	check_and_print_texture(t_all *all)
 {
-	if (all->wall.start >= 0 && all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x - 0.25 * cos(all->ray.dir)) / (int)SCALE] == '1')
+	if (all->wall.start >= 0 && all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x - STEP * cos(all->ray.dir)) / (int)SCALE] == '1')
 		if(all->map[(int)(all->ray.y + 32) / (int)SCALE][(int)all->ray.x / (int)(SCALE)] == '1')
-			print_texture(all, all->ray.x, &all->texture_NO);
+			print_texture(all, all->ray.x , &all->texture_NO);
 		else
 			print_texture(all, all->ray.x, &all->texture_SO);
 	else if (all->wall.start >= 0)

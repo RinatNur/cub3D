@@ -6,13 +6,13 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:37:05 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 14:01:08 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/18 17:04:08 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int 	is_ident_true(t_all *all)
+static int		is_ident_true(t_all *all)
 {
 	if (all->no_text && all->so_text && all->we_text && all->ea_text && all->s_text
 		&& all->floor_col >= 0 && all->ceiling_col >= 0 && all->win_h >= 0 && all->win_w >= 0)
@@ -20,7 +20,7 @@ static int 	is_ident_true(t_all *all)
 	return(0);
 }
 
-void 	ft_free_mas(char **mas)
+void			ft_free_mas(char **mas)
 {
 	int  i = -1;
 
@@ -29,7 +29,7 @@ void 	ft_free_mas(char **mas)
 	free(mas);
 }
 
-static void 	is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err)
+static void		is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err)
 {
 	int i = 0;
 
@@ -70,7 +70,7 @@ static void 	get_scr_size(t_all *all, char *line)
 	{
 		while(size[i][j])
 			j++;
-		if (j > 5)
+		if (j > 11)
 			exit_err("Not valid screen size", 2);
 		i++;
 	}
@@ -108,7 +108,7 @@ static int		get_F_and_C_col(t_all *all, char *s)
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
-void check_line(t_all *all, char *s)
+void 			check_line(t_all *all, char *s)
 {
 	char  *line;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 16:59:58 by jheat             #+#    #+#             */
+/*   Updated: 2020/10/18 16:59:58 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _CUB_3_D_
 # define _CUB_3_D_
 # include <stdio.h>
@@ -9,6 +21,7 @@
 # include "./mlx_dylib/mlx.h"
 
 # define FOV M_PI/3
+# define STEP 0.2
 # define SCALE (double)64
 # define LEFT keycode == 0
 # define RIGHT keycode == 2

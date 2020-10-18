@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/jheat/git_cub3D/check_file.c
-cub3D.h
-/Users/jheat/git_cub3D/cub3D.h
-
 /Users/jheat/git_cub3D/cub3D.h
 stdio.h
 -
@@ -25,6 +21,10 @@ unistd.h
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
 ./mlx_dylib/mlx.h
 /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+
+/Users/jheat/git_cub3D/draw_sprite.c
+cub3D.h
+/Users/jheat/git_cub3D/cub3D.h
 
 /Users/jheat/git_cub3D/get_next_line/get_next_line.h
 stdlib.h

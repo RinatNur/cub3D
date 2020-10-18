@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_sprite.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 17:00:35 by jheat             #+#    #+#             */
+/*   Updated: 2020/10/18 17:00:35 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 static void 	spr_struct_init(t_all *all, t_spr_list *sprite)
 {
-//	sprite->len_from_plr = (int)sqrt((pow(all->plr.x - sprite->spr_x, 2) + (pow(all->plr.y - sprite->spr_y, 2))));
 	sprite->spr_dir = atan2((double)(sprite->spr_y - all->plr.y), (double)(sprite->spr_x - all->plr.x));
 	while (sprite->spr_dir - all->plr.dir > M_PI)
 		sprite->spr_dir -= 2 * M_PI;
 	while (sprite->spr_dir - all->plr.dir < -M_PI)
 		sprite->spr_dir += 2 * M_PI;
-	sprite->spr_scr_size = all->win_h * SCALE / sprite->len_from_plr;
+	sprite->spr_scr_size = (all->win_h) * SCALE / sprite->len_from_plr;
 	sprite->h_offset = (sprite->spr_dir - all->plr.dir) * all->win_w
 					   / (M_PI / 3) + all->win_w / 2 - sprite->spr_scr_size / 2;
 	sprite->v_offset = all->win_h / 2 - sprite->spr_scr_size / 2;
@@ -30,8 +41,8 @@ static void 	draw_spr_res(t_all *all, t_spr_list *sprite)
 			sprite->j++;
 			continue;
 		}
-		sprite->color = get_color(&all->texture_S, sprite->i * SCALE / sprite->spr_scr_size,
-								  sprite->j * SCALE / sprite->spr_scr_size);
+		sprite->color = get_color(&all->texture_S, (int)(sprite->i * (all->texture_S.width / SCALE) * SCALE / sprite->spr_scr_size),
+								  (int)(sprite->j * (all->texture_S.height / SCALE) * SCALE / sprite->spr_scr_size));
 		if (sprite->color != 0x980088)
 			my_mlx_pixel_put(all, &all->win.img, sprite->h_offset + sprite->i, // changed all to &all->win.img
 							 sprite->v_offset + sprite->j, sprite->color);
