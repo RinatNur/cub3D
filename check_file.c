@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 13:37:05 by jheat             #+#    #+#             */
+/*   Updated: 2020/10/18 14:01:08 by jheat            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 static int 	is_ident_true(t_all *all)
@@ -10,7 +22,7 @@ static int 	is_ident_true(t_all *all)
 
 void 	ft_free_mas(char **mas)
 {
-	int  i = 0;
+	int  i = -1;
 
 	while (mas[++i])
 		free(mas[i]);
@@ -44,19 +56,16 @@ static void 	is_R_or_F_or_C_valid(t_all *all, char *s, char c, int j, char * err
 static void 	get_scr_size(t_all *all, char *line)
 {
 	char 	**size;
-	int 	i = 0, j = 0;
-	char *tmp = line;
+	int 	i;
+	int 	j;
 
+	j = 0;
 	line = ft_strtrim(line, " ");
-//	free(tmp);
 	is_R_or_F_or_C_valid(all, line, ' ', 2, "Not valid screen size");
 	size = ft_split(line, ' ');
 	free(line);
-	if (NULL == size)
-	{
-		free(size);
+	if (!(i = 0) && NULL == size)
 		exit_err("Malloc: memory is not allocated", 33);
-	}
 	while (size[i])
 	{
 		while(size[i][j])
@@ -66,23 +75,20 @@ static void 	get_scr_size(t_all *all, char *line)
 		i++;
 	}
 	mlx_get_screen_size(all->win.mlx_win, &all->scr_size_x, &all->scr_size_y);
-
 	all->win_w = ft_atoi(size[0]);
 	all->win_h = ft_atoi(size[1]);
-
 	all->win_w = (all->win_w > all->scr_size_x) ? all->scr_size_x : all->win_w;
 	all->win_h = (all->win_h > all->scr_size_y) ? all->scr_size_y : all->win_h;
-	free(size[0]);
-	free(size[1]);
-	free(size);
+	ft_free_mas(size);
 }
 
 static int		get_F_and_C_col(t_all *all, char *s)
 {
-	char **rgb;
-	int r, g, b, t = 0;
-	int i = -1;
+	char	**rgb;
 	char 	*line;
+	int		r;
+	int		g;
+	int		b;
 
 	line = s;
 	is_R_or_F_or_C_valid(all, line, ',', 3, "Not valid Floor Or Ceil color");
@@ -95,14 +101,11 @@ static int		get_F_and_C_col(t_all *all, char *s)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
-	while (rgb[++i])
-		free(rgb[i]);
-	free(rgb);
-//	ft_free_mas(rgb); не работает исправь
+	ft_free_mas(rgb);
 	if (r > 255 || g > 255 || b > 255 || r < 0 || g < 0 || b < 0)
 		exit_err("Not valid Floor Or Ceil color", 2);
 	free(line);
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
 void check_line(t_all *all, char *s)
@@ -129,9 +132,7 @@ void check_line(t_all *all, char *s)
 	else if (*line == 'C' && *(line + 1) == ' ' && all->ceiling_col == -1)
 		all->ceiling_col = get_F_and_C_col(all, ft_strtrim(line + 1, " "));
 	else if (is_ident_true(all) && !(*line == 'C' && *(line + 1) == ' '))
-	{
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
-	}
 	else
 		exit_err("File is not valid", 12);
 	if (*s == 'R' || (*s == 'N' && *(s + 1) == 'O') || (*s == 'S' && *(s + 1) == 'O')

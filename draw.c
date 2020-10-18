@@ -64,12 +64,6 @@ void 	check_and_print_texture(t_all *all)
 		else
 			print_texture(all, all->ray.y, &all->texture_WE);
 	}
-	else
-	{
-//		printf("%i\n", all->count++);
-		print_texture(all, all->ray.y, &all->texture_EA);
-
-	}
 }
 
 void 	draw_walls(t_all *all)
@@ -90,4 +84,29 @@ void 	draw_walls(t_all *all)
 		check_and_print_texture(all);
 		all->wall.start++;
 	}
+}
+
+void	draw_img(t_all *all)
+{
+
+	mlx_destroy_image(all->win.mlx, all->win.img.img);
+	all->win.img.img = mlx_new_image(all->win.mlx, all->win_w, all->win_h);
+	all->win.img.addr = mlx_get_data_addr(all->win.img.img, &all->win.img.bits_per_pixel, &all->win.img.line_length,
+										  &all->win.img.endian);
+	all->spr_list = all->sprite_list_head;
+	while (all->spr_list)
+	{
+		all->spr_list->len_from_plr = (int)sqrt((pow(all->plr.x - all->spr_list->spr_x, 2) + (pow(all->plr.y - all->spr_list->spr_y, 2))));
+		all->spr_list = all->spr_list->next;
+	}
+	sort_spr(&all->sprite_list_head);
+	all->spr_list = all->sprite_list_head;
+	ray_casting(all);
+	while (all->spr_list)
+	{
+		draw_spr(all, all->spr_list);
+		all->spr_list = all->spr_list->next;
+	}
+//	draw_map(all);
+	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win, all->win.img.img, 0, 0);
 }
