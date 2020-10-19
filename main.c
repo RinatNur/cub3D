@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:00:46 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 20:25:27 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 16:07:32 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void			exit_err(char *str, int code)
 	exit(code);
 }
 
-static void		check_argc(t_all *all, int argc, char **argv)
+static void		check_argc(int argc, char **argv)
 {
 	int len;
 
@@ -75,7 +75,7 @@ int				main(int argc, char **argv)
 	int			fd;
 
 	(argc < 2 || argc > 3) ? exit_err("Not valid input data", 2)
-	: check_argc(&all, argc, argv);
+	: check_argc(argc, argv);
 	(fd = open(argv[1], O_RDONLY)) == -1
 	? exit_err("The file can't be opened", 2) : 0;
 	ft_parcer(&all, fd);

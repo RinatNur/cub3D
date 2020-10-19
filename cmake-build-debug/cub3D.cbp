@@ -236,6 +236,9 @@
 		<Unit filename="/Users/jheat/git_cub3D/main.c">
 			<Option target="cub3D"/>
 		</Unit>
+		<Unit filename="/Users/jheat/git_cub3D/make_map.c">
+			<Option target="cub3D"/>
+		</Unit>
 		<Unit filename="/Users/jheat/git_cub3D/move.c">
 			<Option target="cub3D"/>
 		</Unit>

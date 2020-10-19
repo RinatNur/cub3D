@@ -6,15 +6,15 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:01:36 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 17:01:36 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 16:35:45 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void 	create_bmp_header(t_all *all, int size, int fd)
+static void		create_bmp_header(t_all *all, int size, int fd)
 {
-	unsigned char 	bmp_header[54];
+	unsigned char		bmp_header[54];
 
 	ft_bzero(bmp_header, 54);
 	bmp_header[0] = (unsigned char)'B';
@@ -38,29 +38,31 @@ static void 	create_bmp_header(t_all *all, int size, int fd)
 	write(fd, bmp_header, 54);
 }
 
-static void 	print_pixels(t_all *all, int fd)
+static void		print_pixels(t_all *all, int fd)
 {
-	int		y;
-	int 	x;
-	unsigned int 	color;
+	unsigned int		color;
+	int					y;
+	int					x;
 
-	y  = all->win_h -1;
+	y = all->win_h - 1;
 	while (y >= 0)
 	{
 		x = -1;
 		while (++x < all->win_w)
 		{
-			color = *(unsigned int *)(all->win.img.addr + (y * all->win.img.line_length + x * (all->win.img.bits_per_pixel /8)));
+			color = *(unsigned int *)(all->win.img.addr
+					+ (y * all->win.img.line_length
+					+ x * (all->win.img.bits_per_pixel / 8)));
 			write(fd, &color, 3);
 		}
 		y--;
 	}
 }
 
-void 	make_screenshot(t_all *all)
+void			make_screenshot(t_all *all)
 {
-	int 	fd;
-	int 	size;
+	int		fd;
+	int		size;
 
 	if (all->win_w % 4)
 		all->win_w = all->win_w - (all->win_w % 4);

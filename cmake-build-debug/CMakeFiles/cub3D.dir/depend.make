@@ -160,6 +160,12 @@ CMakeFiles/cub3D.dir/main.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/main.c.o: ../main.c
 CMakeFiles/cub3D.dir/main.c.o: ../mlx_dylib/mlx.h
 
+CMakeFiles/cub3D.dir/make_map.c.o: ../cub.h
+CMakeFiles/cub3D.dir/make_map.c.o: ../get_next_line/get_next_line.h
+CMakeFiles/cub3D.dir/make_map.c.o: ../libft/libft.h
+CMakeFiles/cub3D.dir/make_map.c.o: ../make_map.c
+CMakeFiles/cub3D.dir/make_map.c.o: ../mlx_dylib/mlx.h
+
 CMakeFiles/cub3D.dir/move.c.o: ../cub.h
 CMakeFiles/cub3D.dir/move.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/move.c.o: ../libft/libft.h

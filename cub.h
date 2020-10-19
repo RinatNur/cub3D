@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 16:59:58 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 20:16:41 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 17:21:55 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,13 @@ typedef struct				s_all
 	t_texture				texture_we;
 	t_texture				texture_ea;
 	t_texture				texture_s;
-	t_list					*head;
 	t_spr_list				*spr_list;
 	t_spr_list				*sprite_list_head;
+	t_spr_list				*q;
+	t_spr_list				*out;
+	t_spr_list				*p;
+	t_spr_list				*pr;
+	t_list					*head;
 	t_wall					wall;
 	t_ray					ray;
 	t_win					win;
@@ -146,11 +150,12 @@ void						ft_draw_square(t_all *all, int i, int j,
 							double rec_per, int trgb);
 void						draw_walls(t_all *all);
 void						ray_casting(t_all *all);
+char						**make_map(t_all *all);
 void						ft_parcer(t_all *all, int fd);
 double						ft_plr_vision(char map_vision);
 void						ft_spr_lstadd_back(t_spr_list **lst,
 							t_spr_list *new);
-t_spr_list					*sort_spr(t_spr_list **ph);
+t_spr_list					*sort_spr(t_all *all, t_spr_list **ph);
 void						get_spr_list(t_all *all, int i, int j);
 t_spr_list					*ft_spr_lstnew(int x, int y, int len);
 void						check_line(t_all *all, char *line);

@@ -28,10 +28,10 @@ static int		check_char(char const *set, char c)
 
 char			*ft_strtrim(char const *s1, char const *set)
 {
+	size_t		finish;
+	size_t		start;
 	char		*str;
 	int			i;
-	size_t		finish;
-	size_t			start;
 
 	i = 0;
 	start = 0;

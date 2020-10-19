@@ -160,6 +160,12 @@ CMakeFiles/cub3D.dir/main.c.o
  /Users/jheat/git_cub3D/libft/libft.h
  /Users/jheat/git_cub3D/main.c
  /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/make_map.c.o
+ /Users/jheat/git_cub3D/cub.h
+ /Users/jheat/git_cub3D/get_next_line/get_next_line.h
+ /Users/jheat/git_cub3D/libft/libft.h
+ /Users/jheat/git_cub3D/make_map.c
+ /Users/jheat/git_cub3D/mlx_dylib/mlx.h
 CMakeFiles/cub3D.dir/move.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h

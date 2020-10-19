@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:37:05 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 17:56:53 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 17:28:20 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		get_scr_size(t_all *all, char *line)
 	ft_free_mas(size);
 }
 
-static int		get_f_and_c_col(t_all *all, char *s)
+static int		get_f_and_c_col(char *s)
 {
 	char		**rgb;
 	char		*line;
@@ -101,8 +101,6 @@ static int		get_f_and_c_col(t_all *all, char *s)
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
-
-
 void			check_line(t_all *all, char *s)
 {
 	char		*li;
@@ -121,9 +119,9 @@ void			check_line(t_all *all, char *s)
 	else if (*li == 'S' && *(li + 1) == ' ' && !all->s_t)
 		all->s_t = ft_strtrim(li + 1, " ");
 	else if (*li == 'F' && *(li + 1) == ' ' && all->floor_col == -1)
-		all->floor_col = get_f_and_c_col(all, ft_strtrim(li + 1, " "));
+		all->floor_col = get_f_and_c_col(ft_strtrim(li + 1, " "));
 	else if (*li == 'C' && *(li + 1) == ' ' && all->ceiling_col == -1)
-		all->ceiling_col = get_f_and_c_col(all, ft_strtrim(li + 1, " "));
+		all->ceiling_col = get_f_and_c_col(ft_strtrim(li + 1, " "));
 	else if (is_ident_true(all) && !(*li == 'C' && *(li + 1) == ' '))
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
 	else

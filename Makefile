@@ -13,7 +13,7 @@
 NAME = cub3D
 
 SRC = check_file.c colors.c draw.c draw_sprite.c main.c move.c parcer.c \
-        raycasting.c screenshot.c spr_and_map.c check_file_utils.c\
+        raycasting.c screenshot.c spr_and_map.c check_file_utils.c make_map.c\
         get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))

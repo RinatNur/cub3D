@@ -79,7 +79,7 @@ void		draw_img(t_all *all)
 				+ (pow(all->plr.y - all->spr_list->spr_y, 2))));
 		all->spr_list = all->spr_list->next;
 	}
-	sort_spr(&all->sprite_list_head);
+	sort_spr(all, &all->sprite_list_head);
 	all->spr_list = all->sprite_list_head;
 	ray_casting(all);
 	while (all->spr_list)

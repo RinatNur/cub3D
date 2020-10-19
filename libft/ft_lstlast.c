@@ -6,18 +6,18 @@
 /*   By: jheat <jheat@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:16:32 by jheat             #+#    #+#             */
-/*   Updated: 2020/06/16 15:31:50 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 17:35:25 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list		*ft_lstlast(t_list *lst)
 {
 	if (lst)
-    {
+	{
 		while (lst->next != NULL)
-			lst = lst->next; 
+			lst = lst->next;
 	}
 	return (lst);
 }

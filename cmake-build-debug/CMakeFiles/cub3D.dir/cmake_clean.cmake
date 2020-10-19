@@ -46,6 +46,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/cub3D.dir/libft/ft_tolower.c.o"
   "CMakeFiles/cub3D.dir/libft/ft_toupper.c.o"
   "CMakeFiles/cub3D.dir/main.c.o"
+  "CMakeFiles/cub3D.dir/make_map.c.o"
   "CMakeFiles/cub3D.dir/move.c.o"
   "CMakeFiles/cub3D.dir/parcer.c.o"
   "CMakeFiles/cub3D.dir/raycasting.c.o"
