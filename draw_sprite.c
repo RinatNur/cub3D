@@ -21,8 +21,9 @@ static void		spr_struct_init(t_all *all, t_spr_list *sprite)
 	while (sprite->spr_dir - all->plr.dir < -M_PI)
 		sprite->spr_dir += 2 * M_PI;
 	sprite->spr_scr_size = (all->win_h) * SCALE / sprite->len_from_plr;
+	sprite->spr_scr_size1 = (all->win_w) * SCALE / sprite->len_from_plr;
 	sprite->h_offset = (sprite->spr_dir - all->plr.dir) * all->win_w
-			/ (M_PI / 3) + all->win_w / 2 - sprite->spr_scr_size / 2;
+			/ (M_PI / 3) + all->win_w / 2 - sprite->spr_scr_size1 / 2;
 	sprite->v_offset = all->win_h / 2 - sprite->spr_scr_size / 2;
 	sprite->i = 0;
 	sprite->j = 0;
@@ -43,7 +44,7 @@ static void		draw_spr_res(t_all *all, t_spr_list *sprite)
 		}
 		sprite->color = get_color(&all->texture_s,
 				(int)(sprite->i * (all->texture_s.width / SCALE) * SCALE
-					/ sprite->spr_scr_size),
+					/ sprite->spr_scr_size1),
 				(int)(sprite->j * (all->texture_s.height / SCALE) * SCALE
 					/ sprite->spr_scr_size));
 		if (sprite->color != 0x980088)
@@ -62,7 +63,7 @@ void			draw_spr(t_all *all, t_spr_list *sprite)
 	spr_struct_init(all, sprite);
 	if (sprite->spr_scr_size > 2000)
 		sprite->spr_scr_size = 0;
-	while (sprite->i < sprite->spr_scr_size)
+	while (sprite->i < sprite->spr_scr_size1)
 	{
 		if (sprite->h_offset + sprite->i < 0 ||
 			sprite->h_offset + sprite->i >= all->win_w)

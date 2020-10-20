@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:00:46 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/19 16:07:32 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 19:20:00 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ static void		check_argc(int argc, char **argv)
 	if (argc == 3)
 		if (ft_strlen(argv[2]) != 6 || ft_strncmp(argv[2], "--save", 6))
 			exit_err("Not valid input data", 2);
-	if (argc == 2)
-		if (len < 5 || ft_strncmp(&argv[1][len - 4], ".cub", 4))
-			exit_err("Not valid name of map file", 2);
+	if (len < 5 || ft_strncmp(&argv[1][len - 4], ".cub", 4))
+		exit_err("Not valid name of map file", 2);
 }
 
 int				main(int argc, char **argv)
@@ -81,18 +80,18 @@ int				main(int argc, char **argv)
 	ft_parcer(&all, fd);
 	all.win.mlx = mlx_init();
 	all.win.mlx_win = mlx_new_window(all.win.mlx, all.win_w,
-			all.win_h, "cub 3D!");
+			all.win_h, "cub3D");
 	!(all.win.img.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h))
 			? exit_err("No image", 2) : 0;
 	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.BPP,
 			&all.win.img.line_length, &all.win.img.endian);
 	init_textures(&all);
 	draw_img(&all);
+	if (argc == 3)
+		make_screenshot(&all);
 	mlx_put_image_to_window(all.win.mlx, all.win.mlx_win,
 			all.win.img.img, 0, 0);
 	mlx_hook(all.win.mlx_win, 2, 1L, ft_move, &all);
 	mlx_hook(all.win.mlx_win, 17, 1L, close_with_red_x, 0);
-	if (argc == 3)
-		make_screenshot(&all);
 	mlx_loop(all.win.mlx);
 }

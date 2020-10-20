@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 13:37:05 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/19 17:28:20 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/20 15:56:19 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void		is_r_f_c_valid(char *s, char c, int j, char *err)
 		exit_err(err, 2);
 }
 
+//void			make_max_size(t_all *all, int i, int j)
 static void		get_scr_size(t_all *all, char *line)
 {
 	char		**size;
@@ -57,17 +58,17 @@ static void		get_scr_size(t_all *all, char *line)
 	is_r_f_c_valid(line, ' ', 2, "Not valid screen size");
 	size = ft_split(line, ' ');
 	free(line);
+	mlx_get_screen_size(all->win.mlx_win, &all->scr_size_x, &all->scr_size_y);
 	if (!(i = 0) && NULL == size)
 		exit_err("Malloc: memory is not allocated", 33);
 	while (size[i])
 	{
 		while (size[i][j])
 			j++;
-		if (j > 11)
+		if (j > 8)
 			exit_err("Not valid screen size", 2);
 		i++;
 	}
-	mlx_get_screen_size(all->win.mlx_win, &all->scr_size_x, &all->scr_size_y);
 	all->win_w = ft_atoi(size[0]);
 	all->win_h = ft_atoi(size[1]);
 	all->win_w = (all->win_w > all->scr_size_x) ? all->scr_size_x : all->win_w;
@@ -86,6 +87,8 @@ static int		get_f_and_c_col(char *s)
 	line = s;
 	is_r_f_c_valid(line, ',', 3, "Not valid Floor Or Ceil color");
 	rgb = ft_split(line, ',');
+	if (NULL == rgb)
+		exit_err("Malloc: memory is not allocated", 33);
 	if (NULL == rgb)
 	{
 		free(rgb);
@@ -125,6 +128,6 @@ void			check_line(t_all *all, char *s)
 	else if (is_ident_true(all) && !(*li == 'C' && *(li + 1) == ' '))
 		ft_lstadd_back(&all->head, ft_lstnew(all->line));
 	else
-		exit_err("File is not valid", 12);
+		exit_err("File is not valid", 33);
 	free_is_valid(s, li);
 }

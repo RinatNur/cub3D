@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:00:21 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/18 19:56:43 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/20 15:02:07 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void		check_and_print_texture(t_all *all)
 		/ (int)SCALE] == '1')
 		if (all->map[(int)(all->ray.y + 32) / (int)SCALE][(int)all->ray.x
 			/ (int)(SCALE)] == '1')
-			print_texture(all, all->ray.x, &all->texture_no);
-		else
 			print_texture(all, all->ray.x, &all->texture_so);
+		else
+			print_texture(all, all->ray.x, &all->texture_no);
 	else if (all->wall.start >= 0)
 	{
 		if (all->map[(int)all->ray.y / (int)SCALE][(int)(all->ray.x + 32)

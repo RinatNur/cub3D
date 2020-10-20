@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 16:59:58 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/19 17:21:55 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/19 19:27:05 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct				s_spr_list {
 	int						len_from_plr;
 	double					spr_dir;
 	double					spr_scr_size;
+	double					spr_scr_size1;
 	double					h_offset;
 	double					v_offset;
 	double					step;
@@ -142,12 +143,9 @@ typedef struct				s_all
 void						draw_img(t_all *all);
 void						exit_err(char *str, int code);
 int							ft_move(int keycode, t_all *all);
-int							get_trgb(int t, int r, int g, int b);
 void						my_mlx_pixel_put(t_all *all, int x, int y,
 							int color);
 int							get_color(t_texture *texture, int x, int y);
-void						ft_draw_square(t_all *all, int i, int j,
-							double rec_per, int trgb);
 void						draw_walls(t_all *all);
 void						ray_casting(t_all *all);
 char						**make_map(t_all *all);
