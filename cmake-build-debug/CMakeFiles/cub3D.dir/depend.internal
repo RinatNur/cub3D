@@ -6,31 +6,31 @@ CMakeFiles/cub3D.dir/check_file.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/check_file_utils.c.o
  /Users/jheat/git_cub3D/check_file_utils.c
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/colors.c.o
  /Users/jheat/git_cub3D/colors.c
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/draw.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/draw.c
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/draw_sprite.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/draw_sprite.c
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o
  /Users/jheat/git_cub3D/get_next_line/get_next_line.c
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
@@ -159,40 +159,40 @@ CMakeFiles/cub3D.dir/main.c.o
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
  /Users/jheat/git_cub3D/main.c
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/make_map.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
  /Users/jheat/git_cub3D/make_map.c
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/move.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
  /Users/jheat/git_cub3D/move.c
 CMakeFiles/cub3D.dir/parcer.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
  /Users/jheat/git_cub3D/parcer.c
 CMakeFiles/cub3D.dir/raycasting.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
  /Users/jheat/git_cub3D/raycasting.c
 CMakeFiles/cub3D.dir/screenshot.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
  /Users/jheat/git_cub3D/screenshot.c
 CMakeFiles/cub3D.dir/spr_and_map.c.o
  /Users/jheat/git_cub3D/cub.h
  /Users/jheat/git_cub3D/get_next_line/get_next_line.h
  /Users/jheat/git_cub3D/libft/libft.h
- /Users/jheat/git_cub3D/mlx_dylib/mlx.h
+ /Users/jheat/git_cub3D/mlx_dylib/mlx_dylib.h
  /Users/jheat/git_cub3D/spr_and_map.c

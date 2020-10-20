@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:01:12 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/20 15:13:56 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/20 19:50:10 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ static void		init_parcer(t_all *all)
 	all->plr.flag = 0;
 }
 
-static void		is_space_around_0_or_2_or_plr(char **map, int i, int j)//, int end)
+static void		is_space_around_0_or_2_or_plr(char **map, int i, int j)
 {
 	int		len_up;
 	int		len_down;
 	int		len;
-	int		len_end;
 	int		end;
-//	int 	k = i;
 
 	end = 0;
 	while (map[end])
@@ -45,10 +43,8 @@ static void		is_space_around_0_or_2_or_plr(char **map, int i, int j)//, int end)
 	len = (int)ft_strlen(map[i]) - 1;
 	len_up = (i > 0) ? (int)(ft_strlen(map[i - 1]) - 1) : 0;
 	len_down = (i < end) ? (int)(ft_strlen(map[i + 1]) - 1) : 0;
-	len_end = (int)ft_strlen(map[end]) - 1;
-	if (ft_strchr("02NSEW", map[0][j])
-		|| ft_strchr("02NSEW", map[i][0])
-		|| (len_end >= j && (ft_strchr("02NSEW", map[end][j])))
+	if (
+		ft_strchr("02NSEW", map[i][0])
 		|| ft_strchr("02NSEW", map[i][len])
 		|| (0 < i && i < end && 0 < j && j < len
 		&& ((ft_strchr("02NSEW", map[i][j])
@@ -61,32 +57,19 @@ static void		is_space_around_0_or_2_or_plr(char **map, int i, int j)//, int end)
 
 void			init_plr(t_all *all, int i, int j)
 {
-	all->plr.flag == 1 ? exit_err("More than one player", 2) : 0;
+	all->plr.flag == 1 ? exit_err("More than one player", 55) : 0;
 	all->plr.flag = 1;
 	all->plr.x = SCALE * j + (SCALE / 2);
 	all->plr.y = SCALE * i + (SCALE / 2);
 	all->plr.dir = ft_plr_vision(all->map[i][j]);
 }
 
-int				find_last_line(char **map)
-{
-	int end;
-
-	end = 0;
-	while (map[end])
-		end++;
-	end -= 1;
-	return(0); //
-}
-
 static void		check_map_data(t_all *all)
 {
 	int i;
 	int j;
-//	int end;
 
 	i = 0;
-//	end = find_last_line(all->map);
 	while (all->map[i] != NULL)
 	{
 		j = 0;
@@ -95,7 +78,7 @@ static void		check_map_data(t_all *all)
 			if (ft_strchr(" 012NSEW\n", (int)all->map[i][j]))
 			{
 				if (ft_strchr("02NSEW", all->map[i][j]))
-					is_space_around_0_or_2_or_plr(all->map, i, j);//, end);
+					is_space_around_0_or_2_or_plr(all->map, i, j);
 				if (ft_strchr("NSEW", all->map[i][j]))
 					init_plr(all, i, j);
 				else if (all->map[i][j] == '2')
@@ -108,8 +91,6 @@ static void		check_map_data(t_all *all)
 		}
 		i++;
 	}
-//	if (all->map[i] != NULL && all->map[i+1][0] == '\0')
-//		exit_err("Map is not valid", 2);
 }
 
 void			ft_parcer(t_all *all, int fd)
@@ -133,7 +114,7 @@ void			ft_parcer(t_all *all, int fd)
 	all->map = make_map(all);
 	check_map_data(all);
 	if (all->plr.x < 0 || all->plr.y < 0)
-		exit_err("No player in map", 4);
+		exit_err("No player in map", 55);
 	if (!(all->mas_rays = (double *)malloc(sizeof(double) * all->win_w + 1)))
 		exit_err("Malloc: memory is not allocated", 33);
 }

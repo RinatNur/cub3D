@@ -68,7 +68,7 @@ void			make_screenshot(t_all *all)
 		all->win_w = all->win_w - (all->win_w % 4);
 	size = all->win_h * all->win_w + 54;
 	if (!(fd = open("./screenshot.bmp", O_RDWR | O_CREAT, 0666)))
-		exit_err("Screenshot failed", 2);
+		exit_err("Screenshot failed", 77);
 	create_bmp_header(all, size, fd);
 	print_pixels(all, fd);
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 16:59:58 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/19 19:27:05 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/20 19:22:09 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include "./libft/libft.h"
 # include "./get_next_line/get_next_line.h"
-# include "./mlx_dylib/mlx.h"
+# include "./mlx_dylib/mlx_dylib.h"
 
 # define BPP bits_per_pixel
 # define T_NO texture_no
@@ -160,6 +160,9 @@ void						check_line(t_all *all, char *line);
 void						ft_free_mas(char **mas);
 void						free_is_valid(const char *s, char *line);
 char						*skip_space(char *line);
+void						make_max_size(t_all *all, int i);
+void						get_scr_value(t_all *all, char **size, int i,
+							int j);
 void						draw_spr(t_all *all, t_spr_list *sprite);
 void						make_screenshot(t_all *all);
 

@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:00:46 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/19 19:20:00 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/20 18:55:27 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		init_textures(t_all *all)
 				&all->T_EA.line_length, &all->T_EA.endian);
 	}
 	else
-		exit_err("Not valid textures", 12);
+		exit_err("Not valid textures", 44);
 }
 
 static int		close_with_red_x(int code)
@@ -63,9 +63,9 @@ static void		check_argc(int argc, char **argv)
 	len = ft_strlen(argv[1]);
 	if (argc == 3)
 		if (ft_strlen(argv[2]) != 6 || ft_strncmp(argv[2], "--save", 6))
-			exit_err("Not valid input data", 2);
+			exit_err("Not valid input data", 88);
 	if (len < 5 || ft_strncmp(&argv[1][len - 4], ".cub", 4))
-		exit_err("Not valid name of map file", 2);
+		exit_err("Not valid name of map file", 88);
 }
 
 int				main(int argc, char **argv)
@@ -73,16 +73,16 @@ int				main(int argc, char **argv)
 	t_all		all;
 	int			fd;
 
-	(argc < 2 || argc > 3) ? exit_err("Not valid input data", 2)
+	(argc < 2 || argc > 3) ? exit_err("Not valid input data", 88)
 	: check_argc(argc, argv);
 	(fd = open(argv[1], O_RDONLY)) == -1
-	? exit_err("The file can't be opened", 2) : 0;
+	? exit_err("The file can't be opened", 77) : 0;
 	ft_parcer(&all, fd);
 	all.win.mlx = mlx_init();
 	all.win.mlx_win = mlx_new_window(all.win.mlx, all.win_w,
 			all.win_h, "cub3D");
 	!(all.win.img.img = mlx_new_image(all.win.mlx, all.win_w, all.win_h))
-			? exit_err("No image", 2) : 0;
+			? exit_err("No image", 66) : 0;
 	all.win.img.addr = mlx_get_data_addr(all.win.img.img, &all.win.img.BPP,
 			&all.win.img.line_length, &all.win.img.endian);
 	init_textures(&all);

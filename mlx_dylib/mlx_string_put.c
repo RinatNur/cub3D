@@ -1,5 +1,5 @@
 
-#include "mlx.h"
+#include "mlx_dylib.h"
 
 #include "font.c"
 

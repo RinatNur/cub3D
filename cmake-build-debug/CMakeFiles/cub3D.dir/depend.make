@@ -5,31 +5,31 @@ CMakeFiles/cub3D.dir/check_file.c.o: ../check_file.c
 CMakeFiles/cub3D.dir/check_file.c.o: ../cub.h
 CMakeFiles/cub3D.dir/check_file.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/check_file.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/check_file.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/check_file.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/check_file_utils.c.o: ../check_file_utils.c
 CMakeFiles/cub3D.dir/check_file_utils.c.o: ../cub.h
 CMakeFiles/cub3D.dir/check_file_utils.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/check_file_utils.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/check_file_utils.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/check_file_utils.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/colors.c.o: ../colors.c
 CMakeFiles/cub3D.dir/colors.c.o: ../cub.h
 CMakeFiles/cub3D.dir/colors.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/colors.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/colors.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/colors.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/draw.c.o: ../cub.h
 CMakeFiles/cub3D.dir/draw.c.o: ../draw.c
 CMakeFiles/cub3D.dir/draw.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/draw.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/draw.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/draw.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/draw_sprite.c.o: ../cub.h
 CMakeFiles/cub3D.dir/draw_sprite.c.o: ../draw_sprite.c
 CMakeFiles/cub3D.dir/draw_sprite.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/draw_sprite.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/draw_sprite.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/draw_sprite.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o: ../get_next_line/get_next_line.c
 CMakeFiles/cub3D.dir/get_next_line/get_next_line.c.o: ../get_next_line/get_next_line.h
@@ -158,41 +158,41 @@ CMakeFiles/cub3D.dir/main.c.o: ../cub.h
 CMakeFiles/cub3D.dir/main.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/main.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/main.c.o: ../main.c
-CMakeFiles/cub3D.dir/main.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/main.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/make_map.c.o: ../cub.h
 CMakeFiles/cub3D.dir/make_map.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/make_map.c.o: ../libft/libft.h
 CMakeFiles/cub3D.dir/make_map.c.o: ../make_map.c
-CMakeFiles/cub3D.dir/make_map.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/make_map.c.o: ../mlx_dylib/mlx_dylib.h
 
 CMakeFiles/cub3D.dir/move.c.o: ../cub.h
 CMakeFiles/cub3D.dir/move.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/move.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/move.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/move.c.o: ../mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/move.c.o: ../move.c
 
 CMakeFiles/cub3D.dir/parcer.c.o: ../cub.h
 CMakeFiles/cub3D.dir/parcer.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/parcer.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/parcer.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/parcer.c.o: ../mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/parcer.c.o: ../parcer.c
 
 CMakeFiles/cub3D.dir/raycasting.c.o: ../cub.h
 CMakeFiles/cub3D.dir/raycasting.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/raycasting.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/raycasting.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/raycasting.c.o: ../mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/raycasting.c.o: ../raycasting.c
 
 CMakeFiles/cub3D.dir/screenshot.c.o: ../cub.h
 CMakeFiles/cub3D.dir/screenshot.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/screenshot.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/screenshot.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/screenshot.c.o: ../mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/screenshot.c.o: ../screenshot.c
 
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../cub.h
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../get_next_line/get_next_line.h
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../libft/libft.h
-CMakeFiles/cub3D.dir/spr_and_map.c.o: ../mlx_dylib/mlx.h
+CMakeFiles/cub3D.dir/spr_and_map.c.o: ../mlx_dylib/mlx_dylib.h
 CMakeFiles/cub3D.dir/spr_and_map.c.o: ../spr_and_map.c
 
