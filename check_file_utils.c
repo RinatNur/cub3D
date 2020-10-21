@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:58:47 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/20 17:42:03 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/21 17:56:22 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void			get_scr_value(t_all *all, char **size, int i, int j)
 		j = 0;
 		i++;
 	}
+	(all->win_w == 0 || all->win_h == 0) ? exit_err("Screen is 0", 22) : 0;
 }

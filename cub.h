@@ -6,7 +6,7 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 16:59:58 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/20 19:22:09 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/21 17:43:59 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ typedef struct				s_wall {
 	int						start;
 	int						end;
 }							t_wall;
+
+typedef struct				s_len_line {
+	int						this;
+	int						up;
+	int						down;
+	int						last;
+	int						first;
+	int						last_in;
+}							t_len_line;
 
 typedef struct				s_data {
 	void					*img;
@@ -114,6 +123,7 @@ typedef struct				s_all
 	t_spr_list				*out;
 	t_spr_list				*p;
 	t_spr_list				*pr;
+	t_len_line				len;
 	t_list					*head;
 	t_wall					wall;
 	t_ray					ray;
@@ -148,8 +158,10 @@ void						my_mlx_pixel_put(t_all *all, int x, int y,
 int							get_color(t_texture *texture, int x, int y);
 void						draw_walls(t_all *all);
 void						ray_casting(t_all *all);
-char						**make_map(t_all *all);
 void						ft_parcer(t_all *all, int fd);
+void						init_parcer(t_all *all);
+void						init_lines_len(t_all *all, char **map, int i);
+void						init_plr(t_all *all, int i, int j);
 double						ft_plr_vision(char map_vision);
 void						ft_spr_lstadd_back(t_spr_list **lst,
 							t_spr_list *new);

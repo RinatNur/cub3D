@@ -59,4 +59,11 @@ add_executable(cub3D
         cub.h
         main.c
         move.c
-        spr_and_map.c parcer.c check_file.c draw_sprite.c raycasting.c screenshot.c check_file_utils.c make_map.c)
+        spr_and_map.c
+        parcer.c
+        check_file.c
+        draw_sprite.c
+        raycasting.c
+        screenshot.c
+        check_file_utils.c
+        parcer_init.c)

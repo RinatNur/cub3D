@@ -6,14 +6,14 @@
 #    By: jheat <jheat@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/17 15:41:11 by jheat             #+#    #+#              #
-#    Updated: 2020/10/20 19:37:00 by jheat            ###   ########.fr        #
+#    Updated: 2020/10/21 18:20:47 by jheat            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRC = check_file.c colors.c draw.c draw_sprite.c main.c move.c parcer.c \
-        raycasting.c screenshot.c spr_and_map.c check_file_utils.c make_map.c\
+SRC = check_file.c colors.c draw.c draw_sprite.c main.c parcer_init.c parcer.c\
+        raycasting.c screenshot.c spr_and_map.c check_file_utils.c move.c\
         get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
@@ -50,10 +50,10 @@ fclean: clean
 
 re: fclean all
 
-run: $(NAME)
+run:
 	./$(NAME) map.cub
 
-scr_shot: $(NAME)
+scr_shot:
 	./$(NAME) map.cub --save
 
 norm :

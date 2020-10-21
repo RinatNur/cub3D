@@ -6,62 +6,29 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:01:12 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/20 19:50:10 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/21 17:53:20 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void		init_parcer(t_all *all)
+static void		is_space_around_0_2_plr(t_all *all, char **map, int i, int j)
 {
-	all->head = NULL;
-	all->no_t = NULL;
-	all->so_t = NULL;
-	all->we_t = NULL;
-	all->ea_t = NULL;
-	all->s_t = NULL;
-	all->win_w = -1;
-	all->win_h = -1;
-	all->floor_col = -1;
-	all->ceiling_col = -1;
-	all->plr.x = -1;
-	all->plr.y = -1;
-	all->plr.flag = 0;
-}
-
-static void		is_space_around_0_or_2_or_plr(char **map, int i, int j)
-{
-	int		len_up;
-	int		len_down;
-	int		len;
-	int		end;
-
-	end = 0;
-	while (map[end])
-		end++;
-	end -= 1;
-	len = (int)ft_strlen(map[i]) - 1;
-	len_up = (i > 0) ? (int)(ft_strlen(map[i - 1]) - 1) : 0;
-	len_down = (i < end) ? (int)(ft_strlen(map[i + 1]) - 1) : 0;
+	init_lines_len(all, map, i);
 	if (
-		ft_strchr("02NSEW", map[i][0])
-		|| ft_strchr("02NSEW", map[i][len])
-		|| (0 < i && i < end && 0 < j && j < len
+		(all->len.first >= j && ft_strchr("02NSEW", map[0][j]))
+		|| (all->len.last >= j && (ft_strchr("02NSEW",
+				map[all->len.last_in][j])))
+		|| ft_strchr("02NSEW", map[i][0])
+		|| ft_strchr("02NSEW", map[i][0])
+		|| ft_strchr("02NSEW", map[i][all->len.this])
+		|| (0 < j && j < all->len.this
 		&& ((ft_strchr("02NSEW", map[i][j])
 		&& (map[i][j - 1] == ' ' || map[i][j + 1] == ' ' || map[i - 1][j] == ' '
-		|| len_up < j || map[i + 1][j] == ' ' || len_down < j)))))
+		|| all->len.up < j || map[i + 1][j] == ' ' || all->len.down < j)))))
 	{
 		exit_err("Not valid map", 55);
 	}
-}
-
-void			init_plr(t_all *all, int i, int j)
-{
-	all->plr.flag == 1 ? exit_err("More than one player", 55) : 0;
-	all->plr.flag = 1;
-	all->plr.x = SCALE * j + (SCALE / 2);
-	all->plr.y = SCALE * i + (SCALE / 2);
-	all->plr.dir = ft_plr_vision(all->map[i][j]);
 }
 
 static void		check_map_data(t_all *all)
@@ -78,7 +45,7 @@ static void		check_map_data(t_all *all)
 			if (ft_strchr(" 012NSEW\n", (int)all->map[i][j]))
 			{
 				if (ft_strchr("02NSEW", all->map[i][j]))
-					is_space_around_0_or_2_or_plr(all->map, i, j);
+					is_space_around_0_2_plr(all, all->map, i, j);
 				if (ft_strchr("NSEW", all->map[i][j]))
 					init_plr(all, i, j);
 				else if (all->map[i][j] == '2')
@@ -91,6 +58,26 @@ static void		check_map_data(t_all *all)
 		}
 		i++;
 	}
+}
+
+static char		**make_map(t_all *all)
+{
+	char		**map;
+	int			i;
+	int			size;
+	t_list		*tmp;
+
+	size = ft_lstsize(all->head);
+	map = ft_calloc(size + 1, sizeof(char *));
+	i = -1;
+	tmp = all->head;
+	while (tmp)
+	{
+		map[++i] = tmp->content;
+		tmp = tmp->next;
+	}
+	map[++i] = NULL;
+	return (map);
 }
 
 void			ft_parcer(t_all *all, int fd)
