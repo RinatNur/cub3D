@@ -6,13 +6,13 @@
 /*   By: jheat <jheat@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:00:21 by jheat             #+#    #+#             */
-/*   Updated: 2020/10/20 19:42:33 by jheat            ###   ########.fr       */
+/*   Updated: 2020/10/24 17:24:24 by jheat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void		print_texture(t_all *all, double coordinate, t_texture *tex)
+void			print_texture(t_all *all, double coordinate, t_texture *tex)
 {
 	all->y_wall = (int)((all->wall.start - all->y_tmp) * tex->height
 					/ (all->wall.end - all->y_tmp));
@@ -21,7 +21,7 @@ void		print_texture(t_all *all, double coordinate, t_texture *tex)
 				get_color(tex, (int)all->x_wall, (int)all->y_wall));
 }
 
-void		check_and_print_texture(t_all *all)
+void			check_and_print_texture(t_all *all)
 {
 	if (all->wall.start >= 0 && all->map[(int)all->ray.y
 		/ (int)SCALE][(int)(all->ray.x - STEP * cos(all->ray.dir))
@@ -41,7 +41,7 @@ void		check_and_print_texture(t_all *all)
 	}
 }
 
-void		draw_walls(t_all *all)
+void			draw_walls(t_all *all)
 {
 	int		i;
 
@@ -64,7 +64,52 @@ void		draw_walls(t_all *all)
 	}
 }
 
-void		draw_img(t_all *all)
+static void		ft_draw_square(t_all *all, int i, int j, double rec_per,
+				int trgb)
+{
+	double		start_x;
+	double		start_y;
+	double		x;
+	double		y;
+
+	start_x = j * rec_per;
+	start_y = i * rec_per;
+	y = start_y;
+	x = start_x;
+	while (y < start_y + rec_per)
+	{
+		while (x < start_x + rec_per)
+		{
+			my_mlx_pixel_put(all, (int)x, (int)y, trgb);
+			x++;
+		}
+		x = start_x;
+		y++;
+	}
+}
+
+// карта не адаптирована по размеру экрана. Необходимо доработать.
+
+static void		draw_map(t_all *all)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (all->map[i])
+	{
+		j = 0;
+		while (all->map[i][j])
+		{
+			if (all->map[i][j] == '1')
+				ft_draw_square(all, i, j, SCALE / 6, 0xFFFFFF);
+			j++;
+		}
+		i++;
+	}
+}
+
+void			draw_img(t_all *all)
 {
 	mlx_destroy_image(all->win.mlx, all->win.img.img);
 	all->win.img.img = mlx_new_image(all->win.mlx, all->win_w, all->win_h);
@@ -87,6 +132,7 @@ void		draw_img(t_all *all)
 		draw_spr(all, all->spr_list);
 		all->spr_list = all->spr_list->next;
 	}
+	draw_map(all);
 	mlx_put_image_to_window(all->win.mlx, all->win.mlx_win,
 			all->win.img.img, 0, 0);
 }
